@@ -13,7 +13,7 @@ export const SidebarData = [
         path: '/unit',
         icon: <AdIcons.FcDepartment/>,
         iconClosed: <RiIcons.RiArrowDownSFill/>,
-        iconOpen: <RiIcons.RiArrowUpSFill/>,
+        iconOpened: <RiIcons.RiArrowUpSFill/>,
         subNav: [
             {
                 title: 'Unit 1',
