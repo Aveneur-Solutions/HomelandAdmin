@@ -1,6 +1,7 @@
 import "semantic-ui-css/semantic.min.css";
 import "./Dashboard.css";
 import { Card, Grid, Image, Feed } from "semantic-ui-react";
+import { observer } from "mobx-react-lite";
 
 const Dashboard = () => (
   <>
@@ -149,4 +150,4 @@ const Dashboard = () => (
   </>
 );
 
-export default Dashboard;
+export default observer(Dashboard);
