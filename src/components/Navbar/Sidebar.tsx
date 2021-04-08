@@ -20,9 +20,6 @@ const Sidebar = () => {
             <button  onClick={() => setSettingsVisibility()} className="menu-item--small">Settings</button>
             <button className="menu-item">LOGOUT</button>
              </Menu>
-             <div>
-                
-            </div>
         </div>
     )
 }
