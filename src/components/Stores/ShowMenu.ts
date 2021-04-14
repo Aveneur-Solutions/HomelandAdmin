@@ -1,10 +1,11 @@
-import { observable, action } from "mobx";
+import { observable, action, makeObservable } from "mobx";
 import { RootStore } from "./rootStore";
 
 export default class ShowMenu {
   rootStore: RootStore;
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
+    makeObservable(this);
   }
 
   @observable adminDashboard = true;
@@ -25,6 +26,7 @@ export default class ShowMenu {
     this.showFeedback = false;
     this.showCustomers = false;
     this.showSettings = false;
+    console.log(this.showUnit)
   };
   @action setGalleryVisibility = () => {
     this.adminDashboard = false;
