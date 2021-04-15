@@ -1,5 +1,4 @@
 import Sidebar from './components/Navbar/Sidebar'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Dashboard from './components/Dashboard/Dashboard';
 import { RootStoreContext } from './components/Stores/rootStore';
@@ -11,7 +10,7 @@ import { useEffect } from 'react';
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
-  const {showUnit} = rootStore.showMenu;
+  const {adminDashboard, showUnit, showGallery} = rootStore.showMenu;
   useEffect(() => {
     console.log(showUnit)
   }, [])
@@ -21,9 +20,9 @@ const App = () => {
 <Sidebar/>
     <div>
       <Sidebar/>
-      <Gallery/>
-
-      {showUnit && <Dashboard/>}
+      {showGallery && <Gallery/>}
+      {adminDashboard && <Dashboard/>}
+      {showUnit && "HELLO"}
     </div>
     </>
   );

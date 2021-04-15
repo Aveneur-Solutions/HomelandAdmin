@@ -6,11 +6,11 @@ import { observer } from "mobx-react-lite"
 
 const Sidebar = () => {
   const rootStore = useContext(RootStoreContext);
-  const {showUnit, setUnitVisibility, setGalleryVisibility, setTaxVisibility, setLogVisibility, setFeedbackVisibility, setCustomerVisibility, setSettingsVisibility} = rootStore.showMenu;
+  const {setAdminDash, setUnitVisibility, setGalleryVisibility, setTaxVisibility, setLogVisibility, setFeedbackVisibility, setCustomerVisibility, setSettingsVisibility} = rootStore.showMenu;
     return (
         <div className="sidenav">
             <Menu>
-            <button id="home" className="menu-item" >Admin Dashboard</button>
+            <button onClick={() => setAdminDash()}id="home" className="menu-item" >Admin Dashboard</button>
             <button  onClick={() => setUnitVisibility()} id="unit" className="menu-item">Unit</button>
             <button  onClick={() => setGalleryVisibility()} id="Gallery" className="menu-item">Gallery</button>
             <button  onClick={() => setTaxVisibility()} id="Tax" className="menu-item">Tax</button>

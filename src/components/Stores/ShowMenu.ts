@@ -17,6 +17,17 @@ export default class ShowMenu {
   @observable showCustomers = false;
   @observable showSettings = false;
 
+  @action setAdminDash = () => {
+    this.adminDashboard = true;
+    this.showUnit = false;
+    this.showGallery = false;
+    this.showTax = false;
+    this.showLog = false;
+    this.showFeedback = false;
+    this.showCustomers = false;
+    this.showSettings = false;
+  };
+
   @action setUnitVisibility = () => {
     this.adminDashboard = false;
     this.showUnit = true;
