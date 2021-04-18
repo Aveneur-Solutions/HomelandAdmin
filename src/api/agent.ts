@@ -1,6 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { IUnit } from "../models/unit";
-import IUser, { IUserLogin, IUserLoginWithOtp, IUserRegister } from "../models/user";
+import IUser, {
+  IUserLogin,
+  IUserLoginWithOtp,
+  IUserRegister,
+} from "../models/user";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -29,9 +33,6 @@ const User = {
   loginWithOtp: (body: IUserLoginWithOtp): Promise<IUser> =>
     requests.post("/user/loginWithOtp", body),
   currentUser: (): Promise<IUser> => requests.get("/user"),
-  register: (body: IUserRegister) => requests.post("/user/register", body),
-  registerWithOtp: (body: IUserLoginWithOtp): Promise<IUser> =>
-    requests.post("/user/registerWithOtp", body),
 };
 
 const Units = {

@@ -37,6 +37,11 @@ export default class UnitStore {
   @action editUnit = async (data: IUnit) => {
     try {
       await agent.Units.edit(data.id, data);
+      runInAction(() => {
+        const unit = this.units.filter((unit) => unit.id === data.id)[0];
+        const index = this.units.indexOf(unit);
+        this.units[index] = data;
+      });
     } catch (error) {
       console.log(error);
     }

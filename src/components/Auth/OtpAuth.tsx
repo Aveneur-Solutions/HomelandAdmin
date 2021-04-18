@@ -15,8 +15,6 @@ const OtpAuth: React.FC<IProps> = ({ phoneNo, func, buttonText }) => {
   const rootStore = useContext(RootStoreContext);
   const { user } = rootStore.userStore;
 
-  const history = useHistory();
-
   const {
     register,
     handleSubmit,
@@ -41,9 +39,7 @@ const OtpAuth: React.FC<IProps> = ({ phoneNo, func, buttonText }) => {
         placeholder="OTP"
       />
       {errors.otp && <span>Please enter a valid OTP</span>}
-      <button type="submit" className="button">
-        {buttonText}
-      </button>
+      <input type="submit" className="button" value={buttonText} />
     </form>
   );
 };

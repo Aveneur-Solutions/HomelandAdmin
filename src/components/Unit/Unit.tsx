@@ -38,7 +38,7 @@ const Unit = () => {
           setEditMode={setForm}
         />
       ) : (
-        <UnitForm unit={unit} onSubmit={unit ? addUnit : editUnit} />
+        <UnitForm unit={unit} onSubmit={!unit ? addUnit : editUnit} setEditMode={setForm} />
       )}
     </div>
   );

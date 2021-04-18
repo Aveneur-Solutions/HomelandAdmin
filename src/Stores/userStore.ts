@@ -20,7 +20,7 @@ export default class UserStore {
     try {
       await agent.User.login(body);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 
@@ -50,25 +50,5 @@ export default class UserStore {
   @action logout = () => {
     this.rootStore.commonStore.removeToken();
     this.user = null;
-  };
-
-  @action registration = async (body: IUserRegister) => {
-    try {
-      await agent.User.register(body);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  @action registerWithOtp = async (body: IUserLoginWithOtp) => {
-    try {
-      const user = await agent.User.registerWithOtp(body);
-      runInAction(() => {
-        this.user = user;
-        this.rootStore.commonStore.setToken(user.token);
-      });
-    } catch (error) {
-      console.log(error);
-    }
   };
 }

@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IUserLogin } from "../../models/user";
 import { RootStoreContext } from "../../Stores/rootStore";
@@ -19,7 +20,9 @@ const Login = () => {
 
   const onLogin = (data: IUserLogin) => {
     setPhoneNo(data.phoneNumber);
-    login(data).then(() => setOtp(true));
+    login(data)
+      .then(() => setOtp(true))
+      .catch((err) => console.log(err.response));
   };
 
   return (
@@ -55,4 +58,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default observer(Login);

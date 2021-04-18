@@ -4,19 +4,20 @@ import { IUnit } from "../../models/unit";
 
 interface IProps {
   unit: IUnit | null;
-  onSubmit: (data: IUnit) => Promise<void>
+  onSubmit: (data: IUnit) => Promise<void>;
+  setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const UnitForm: React.FC<IProps> = ({ unit, onSubmit }) => {
+const UnitForm: React.FC<IProps> = ({ unit, onSubmit, setEditMode }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IUnit>();
-  
+
   const onSubmitHandler = (data: IUnit) => {
-    onSubmit(data)
-  }
+    onSubmit(data).then(() => setEditMode(false));
+  };
 
   return (
     <div>

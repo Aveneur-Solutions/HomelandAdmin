@@ -16,6 +16,8 @@ const Sidebar = () => {
     setCustomerVisibility,
     setSettingsVisibility,
   } = rootStore.showMenu;
+  const { logout, user } = rootStore.userStore;
+
   return (
     <div className="sidenav">
       <Menu>
@@ -70,7 +72,9 @@ const Sidebar = () => {
         >
           Settings
         </button>
-        <button className="menu-item">LOGOUT</button>
+        <button className="menu-item" onClick={logout}>
+          LOGOUT
+        </button>
       </Menu>
     </div>
   );
