@@ -16,6 +16,9 @@ const UnitForm: React.FC<IProps> = ({ unit, onSubmit, setEditMode }) => {
   } = useForm<IUnit>();
 
   const onSubmitHandler = (data: IUnit) => {
+    console.log(data)
+    // data.images = [];
+    // if(data.images[0]) data.images.push(data.images[0]);
     onSubmit(data).then(() => setEditMode(false));
   };
 
@@ -104,6 +107,24 @@ const UnitForm: React.FC<IProps> = ({ unit, onSubmit, setEditMode }) => {
         />
         <br />
         {errors.noOfBalconies && <p>{errors.noOfBalconies.message}</p>}
+        <label htmlFor="netArea">Net Area</label>
+        <br />
+        <input
+          id="netArea"
+          defaultValue={unit?.netArea}
+          {...register("netArea", { required: "This field is required" })}
+        />
+        <br />
+        {errors.netArea && <p>{errors.netArea.message}</p>}
+        <label htmlFor="commonArea">Common Area</label>
+        <br />
+        <input
+          id="commonArea"
+          defaultValue={unit?.commonArea}
+          {...register("commonArea", { required: "This field is required" })}
+        />
+        <br />
+        {errors.commonArea && <p>{errors.commonArea.message}</p>}
         <label htmlFor="bookingPrice">Booking Price</label>
         <br />
         <input
@@ -122,6 +143,10 @@ const UnitForm: React.FC<IProps> = ({ unit, onSubmit, setEditMode }) => {
             required: "This field is required",
           })}
         />
+        <br />
+        <label htmlFor="images">Upload picture</label>
+        <br />
+        <input id="images" type="file" {...register("images")} />
         <br />
         {errors.downPaymentDays && <p>{errors.downPaymentDays.message}</p>}
         <input style={{ marginTop: 10 }} type="submit" value="Submit" />

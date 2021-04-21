@@ -1,4 +1,4 @@
-interface IUnitModel {
+export interface IUnit {
   id: string;
   size: number;
   price: number;
@@ -8,9 +8,13 @@ interface IUnitModel {
   noOfBaths: number;
   noOfBalconies: number;
   bookingPrice: number;
-}
-
-export interface IUnit extends IUnitModel {
   isBooked: boolean;
   downPaymentDays: number;
+  netArea: number;
+  commonArea: number;
+  images?: any[]
 }
+
+// export interface IImage {
+//   imageLocation: string
+// }

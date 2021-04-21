@@ -1,10 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { IUnit } from "../models/unit";
-import IUser, {
-  IUserLogin,
-  IUserLoginWithOtp,
-  IUserRegister,
-} from "../models/user";
+import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
+import { createUnitFormData } from "./formDataUtil";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
 
@@ -35,10 +32,29 @@ const User = {
   currentUser: (): Promise<IUser> => requests.get("/user"),
 };
 
+const unitForm = {
+  postForm: (url: string, data: IUnit) => {
+    const formData = createUnitFormData(data);
+    return axios
+      .post(url, formData, {
+        headers: { "Content-type": "multipart/form-data" },
+      })
+      .then(responseBody);
+  },
+  putForm: (url: string, data: IUnit) => {
+    const formData = createUnitFormData(data);
+    return axios
+      .put(url, formData, {
+        headers: { "Content-type": "multipart/form-data" },
+      })
+      .then(responseBody);
+  },
+};
+
 const Units = {
   unitList: (): Promise<IUnit[]> => requests.get("/flat"),
-  create: (body: IUnit) => requests.post("/flat", body),
-  edit: (id: string, body: IUnit) => requests.put(`/flat/${id}`, body),
+  create: (body: IUnit) => unitForm.postForm("/flat", body),
+  edit: (id: string, body: IUnit) => unitForm.putForm(`/flat/${id}`, body),
 };
 
 export default { Units, User };
