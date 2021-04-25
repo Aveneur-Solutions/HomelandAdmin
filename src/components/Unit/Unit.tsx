@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { IUnit } from "../../models/unit";
 import { RootStoreContext } from "../../Stores/rootStore";
+import ConfirmationModal from "./DeleteUnitConfirmDiv";
 import UnitForm from "./UnitForm";
 import UnitList from "./UnitList";
 
@@ -31,12 +32,15 @@ const Unit = () => {
         {!form ? "Add new flat" : "Go back"}
       </button>
       {!form ? (
-        <UnitList
-          units={units}
-          setUnit={setUnit}
-          editMode={form}
-          setEditMode={setForm}
-        />
+        <Fragment>
+          <UnitList
+            units={units}
+            setUnit={setUnit}
+            editMode={form}
+            setEditMode={setForm}
+          />
+        </Fragment>
+
       ) : (
         <UnitForm unit={unit} onSubmit={!unit ? addUnit : editUnit} setEditMode={setForm} />
       )}

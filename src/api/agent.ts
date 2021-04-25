@@ -3,7 +3,8 @@ import { IUnit } from "../models/unit";
 import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createUnitFormData } from "./formDataUtil";
 
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = "http://homeland.aveneur.com/api";
+// axios.defaults.baseURL = "http://localhost:5000/api";
 
 axios.interceptors.request.use(
   (config) => {
@@ -55,6 +56,8 @@ const Units = {
   unitList: (): Promise<IUnit[]> => requests.get("/flat"),
   create: (body: IUnit) => unitForm.postForm("/flat", body),
   edit: (id: string, body: IUnit) => unitForm.putForm(`/flat/${id}`, body),
+  details:(id : string) => requests.get(`/flat/${id}`),
+  delete : (id : string) => requests.del(`/flat/${id}`)
 };
 
 export default { Units, User };

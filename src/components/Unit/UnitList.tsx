@@ -1,5 +1,7 @@
 import { observer } from "mobx-react-lite";
+import React, { useState } from "react";
 import { IUnit } from "../../models/unit";
+import DeleteUnitConfirmDiv from "./DeleteUnitConfirmDiv";
 
 interface IProps {
   units: any[];
@@ -14,6 +16,15 @@ const UnitList: React.FC<IProps> = ({
   editMode,
   setEditMode,
 }) => {
+  const [confirmationDiv, showConfirmationDiv] = useState(false);
+  const [unitId,setUnitId] = useState("");
+  const handleClickDelete = (id : string) => {
+    showConfirmationDiv(true)
+    setUnitId(id)
+  }
+   const handleClickDetails = (id : string) => {
+    setUnitId(id)
+  }
   return (
     <div>
       <table>
@@ -29,7 +40,7 @@ const UnitList: React.FC<IProps> = ({
         </thead>
         <tbody>
           {units.map((unit) => {
-            const { id, size, level, buildingNumber, price } = unit;
+            const { id, size, level, buildingNumber, price  } = unit;
             return (
               <tr key={id}>
                 <td>{id}</td>
@@ -46,13 +57,15 @@ const UnitList: React.FC<IProps> = ({
                   >
                     Edit
                   </button>
-                  <button>Delete</button>
+                  <button onClick={() => handleClickDelete(id)}>Delete</button>
+                  <button >Details</button>
                 </td>
               </tr>
             );
           })}
         </tbody>
       </table>
+     {confirmationDiv &&  <DeleteUnitConfirmDiv id={unitId} showModal={showConfirmationDiv} />}
     </div>
   );
 };

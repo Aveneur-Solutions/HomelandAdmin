@@ -46,4 +46,17 @@ export default class UnitStore {
       console.log(error);
     }
   };
+  @action deleteUnit = async (id : string) => {
+    try{
+      await agent.Units.delete(id);
+      runInAction (() => {
+        console.log("success")
+        const unit = this.units.filter((unit) => unit.id !== id);
+        this.units = unit;
+      })
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
 }
