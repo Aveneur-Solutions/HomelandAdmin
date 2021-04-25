@@ -1,4 +1,5 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
+import { toast } from "react-toastify";
 import agent from "../api/agent";
 import { IUnit } from "../models/unit";
 import { RootStore } from "./rootStore";
@@ -30,6 +31,7 @@ export default class UnitStore {
         this.units.push(data);
       });
     } catch (error) {
+      toast.error("A flat with this id already exists");
       console.log(error);
     }
   };

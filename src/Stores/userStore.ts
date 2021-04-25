@@ -6,7 +6,7 @@ import IUser, {
   IUserRegister,
 } from "../models/user";
 import { RootStore } from "./rootStore";
-
+import { history } from "../";
 export default class UserStore {
   rootStore: RootStore;
   constructor(rootStore: RootStore) {
@@ -30,6 +30,7 @@ export default class UserStore {
       runInAction(() => {
         this.user = user;
         this.rootStore.commonStore.setToken(user.token);
+        history.push("/dashboard")
       });
     } catch (error) {
       throw error;

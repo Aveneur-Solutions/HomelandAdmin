@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
+import { toast } from "react-toastify";
 import { IUnit } from "../models/unit";
 import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createUnitFormData } from "./formDataUtil";
+import { history } from "../";
 
 axios.defaults.baseURL = "http://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
@@ -16,7 +18,31 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
+axios.interceptors.response.use(undefined, (error ) => {
+  if (error.message === "Network Error" && !error.response) {
+    toast.error("Network error -- make sure API server is running");
+    console.log(error);
+  }
+  const { status, data, config } = error.response;
+  if (status === 404) {
+    history.push("/notFoundeekdom");
+  }
+  if (
+    status === 400 &&
+    config.method === "get" &&
+    data.errors.hasOwnProperty("id")
+  ) {
+    history.push("/notFound");
+  }
+  if (status === 500) {
+    toast.error("Server Error Check the terminal for more info");
+  }
+  if(error.response.status === 409 )
+  {
+    toast.error("A flat with this id already exists");
+  }
+  throw error.response;
+});
 const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
