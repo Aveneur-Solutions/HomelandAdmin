@@ -2,6 +2,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./Dashboard.css";
 import { Card, Grid, Image, Feed } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => (
   <>
@@ -10,6 +11,7 @@ const Dashboard = () => (
         <Grid.Row>
           <Grid.Column>
             <div className="forcards">
+              <Link to="/unitManagement">
               <Card fluid>
                 <Image>
                   {" "}
@@ -23,12 +25,15 @@ const Dashboard = () => (
                   <Card.Header>Unit Management</Card.Header>
                 </Card.Content>
               </Card>
+              </Link>
+            
             </div>
           </Grid.Column>
 
           {/* GALLERY DATA GOES HERE */}
           <Grid.Column>
             <div className="forcards">
+              <Link to="/gallery">
               <Card fluid>
                 <Image>
                   {" "}
@@ -42,6 +47,8 @@ const Dashboard = () => (
                   <Card.Header>Gallery Management</Card.Header>
                 </Card.Content>
               </Card>
+              </Link>
+              
             </div>
           </Grid.Column>
           <Grid.Column>

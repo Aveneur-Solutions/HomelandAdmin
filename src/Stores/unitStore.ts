@@ -1,4 +1,5 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
+import { toast } from "react-toastify";
 import agent from "../api/agent";
 import { IUnit } from "../models/unit";
 import { RootStore } from "./rootStore";
@@ -30,6 +31,7 @@ export default class UnitStore {
         this.units.push(data);
       });
     } catch (error) {
+      toast.error("A flat with this id already exists");
       console.log(error);
     }
   };
@@ -46,4 +48,17 @@ export default class UnitStore {
       console.log(error);
     }
   };
+  @action deleteUnit = async (id : string) => {
+    try{
+      await agent.Units.delete(id);
+      runInAction (() => {
+        console.log("success")
+        const unit = this.units.filter((unit) => unit.id !== id);
+        this.units = unit;
+      })
+    }
+    catch (error){
+      console.log(error)
+    }
+  }
 }

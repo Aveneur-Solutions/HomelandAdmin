@@ -3,6 +3,7 @@ import { slide as Menu } from "react-burger-menu";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const rootStore = useContext(RootStoreContext);
@@ -22,42 +23,28 @@ const Sidebar = () => {
     <div className="sidenav">
       <Menu>
         <button onClick={() => setAdminDash()} id="home" className="menu-item">
-          Admin Dashboard
+        <Link to="/dashboard">
+            Admin Dashboard
+         </Link>
         </button>
+
         <button
           onClick={() => setUnitVisibility()}
           id="unit"
           className="menu-item"
         >
-          Unit
+          <Link to="/unitManagement">
+            Unit
+         </Link>
         </button>
         <button
           onClick={() => setGalleryVisibility()}
           id="Gallery"
           className="menu-item"
         >
-          Gallery
-        </button>
-        <button
-          onClick={() => setTaxVisibility()}
-          id="Tax"
-          className="menu-item"
-        >
-          Tax
-        </button>
-        <button
-          onClick={() => setLogVisibility()}
-          id="Activity Log"
-          className="menu-item"
-        >
-          Activity Log
-        </button>
-        <button
-          onClick={() => setFeedbackVisibility()}
-          id="User Feedback"
-          className="menu-item"
-        >
-          User Feedback
+        <Link to="/gallery">
+           Gallery
+         </Link>
         </button>
         <button
           onClick={() => setCustomerVisibility()}
