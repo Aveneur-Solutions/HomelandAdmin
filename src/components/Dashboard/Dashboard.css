@@ -1,5 +1,8 @@
 .dashboard{
+    position: absolute;
     margin-left:40vh;
+}
+.dashtop{
     margin-top: 10vh;
 }
 
