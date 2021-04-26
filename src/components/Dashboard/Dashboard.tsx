@@ -7,26 +7,26 @@ import { Link } from "react-router-dom";
 const Dashboard = () => (
   <>
     <div className="dashboard">
+      <div className="dashtop">
       <Grid columns="four">
         <Grid.Row>
           <Grid.Column>
             <div className="forcards">
               <Link to="/unitManagement">
-              <Card fluid>
-                <Image>
-                  {" "}
-                  <img
-                    className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/du.jpg"}
-                    alt=""
-                  />
-                </Image>
-                <Card.Content>
-                  <Card.Header>Unit Management</Card.Header>
-                </Card.Content>
-              </Card>
+                <Card fluid>
+                  <Image>
+                    {" "}
+                    <img
+                      className="logoimg"
+                      src={process.env.PUBLIC_URL + "/images/du.jpg"}
+                      alt=""
+                    />
+                  </Image>
+                  <Card.Content>
+                    <Card.Header>Unit Management</Card.Header>
+                  </Card.Content>
+                </Card>
               </Link>
-            
             </div>
           </Grid.Column>
 
@@ -34,21 +34,20 @@ const Dashboard = () => (
           <Grid.Column>
             <div className="forcards">
               <Link to="/gallery">
-              <Card fluid>
-                <Image>
-                  {" "}
-                  <img
-                    className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/gu.png"}
-                    alt=""
-                  />
-                </Image>
-                <Card.Content>
-                  <Card.Header>Gallery Management</Card.Header>
-                </Card.Content>
-              </Card>
+                <Card fluid>
+                  <Image>
+                    {" "}
+                    <img
+                      className="logoimg"
+                      src={process.env.PUBLIC_URL + "/images/gu.png"}
+                      alt=""
+                    />
+                  </Image>
+                  <Card.Content>
+                    <Card.Header>Gallery Management</Card.Header>
+                  </Card.Content>
+                </Card>
               </Link>
-              
             </div>
           </Grid.Column>
           <Grid.Column>
@@ -58,12 +57,12 @@ const Dashboard = () => (
                   {" "}
                   <img
                     className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/tax.jpg"}
+                    src={process.env.PUBLIC_URL + "/images/cm.png"}
                     alt=""
                   />
                 </Image>
                 <Card.Content>
-                  <Card.Header>Tax Management</Card.Header>
+                  <Card.Header>Customer Management</Card.Header>
                 </Card.Content>
               </Card>
             </div>
@@ -115,44 +114,8 @@ const Dashboard = () => (
             </div>
           </Grid.Column>
         </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column>
-            <div className="forcards">
-              <Card fluid>
-                <Image>
-                  {" "}
-                  <img
-                    className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/uf.jpeg"}
-                    alt=""
-                  />
-                </Image>
-                <Card.Content>
-                  <Card.Header>User FeedBack</Card.Header>
-                </Card.Content>
-              </Card>
-            </div>
-          </Grid.Column>
-          <Grid.Column>
-            <div className="forcards">
-              <Card fluid>
-                <Image>
-                  {" "}
-                  <img
-                    className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/cm.png"}
-                    alt=""
-                  />
-                </Image>
-                <Card.Content>
-                  <Card.Header>Customer Management</Card.Header>
-                </Card.Content>
-              </Card>
-            </div>
-          </Grid.Column>
-        </Grid.Row>
       </Grid>
+      </div>
     </div>
   </>
 );

@@ -5,8 +5,7 @@ import { RootStoreContext } from "../../Stores/rootStore";
 import ConfirmationModal from "./DeleteUnitConfirmDiv";
 import UnitForm from "./UnitForm";
 import UnitList from "./UnitList";
-
-const unitStyle = { marginLeft: "20%", marginTop: 60 };
+import "./unit.css";
 
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
@@ -20,7 +19,8 @@ const Unit = () => {
   const [unit, setUnit] = useState<IUnit | null>(null);
 
   return (
-    <div style={unitStyle}>
+    <div className="unittop">
+    <div className="unitdash">
       <button
         type="button"
         style={{ marginBottom: 20 }}
@@ -44,7 +44,7 @@ const Unit = () => {
       ) : (
         <UnitForm unit={unit} onSubmit={!unit ? addUnit : editUnit} setEditMode={setForm} />
       )}
-    </div>
+    </div></div>
   );
 };
 
