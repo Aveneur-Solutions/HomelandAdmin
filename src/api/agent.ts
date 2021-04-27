@@ -37,9 +37,9 @@ axios.interceptors.response.use(undefined, (error ) => {
   if (status === 500) {
     toast.error("Server Error Check the terminal for more info");
   }
-  if(error.response.status === 409 )
+  if(status === 409 )
   {
-    toast.error("A flat with this id already exists");
+   console.log(data);
   }
   throw error.response;
 });

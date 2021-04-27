@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IUserLogin } from "../../models/user";
 import { RootStoreContext } from "../../Stores/rootStore";
@@ -11,7 +11,7 @@ const Login = () => {
 
   const [phoneNo, setPhoneNo] = useState("");
   const [otp, setOtp] = useState(false);
-
+  const[passwordFieldVisibility,setPasswordFieldVisibility] = useState(true);
   const {
     register,
     handleSubmit,
@@ -41,12 +41,16 @@ const Login = () => {
         <br />
         <label htmlFor="password">Password</label>
         <br />
+        <div >
         <input
           id="password"
-          type="text"
+          type={passwordFieldVisibility ? "password" : "text"}
           placeholder="ENTER PASSWORD"
           {...register("password", { required: "Password is required" })}
         />
+        <input type="button" onClick={() => setPasswordFieldVisibility(!passwordFieldVisibility)} value={passwordFieldVisibility ?"Show Password" : "Hide Password" }/>
+        </div>
+        
         {errors.password && <p>{errors.password.message}</p>}
         <br />
         <input type="submit" value="Submit" />
