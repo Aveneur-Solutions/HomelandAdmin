@@ -17,8 +17,6 @@ const UnitForm: React.FC<IProps> = ({ unit, onSubmit, setEditMode }) => {
 
   const onSubmitHandler = (data: IUnit) => {
     console.log(data)
-    // data.images = [];
-    // if(data.images[0]) data.images.push(data.images[0]);
     onSubmit(data).then(() => setEditMode(false));
   };
 

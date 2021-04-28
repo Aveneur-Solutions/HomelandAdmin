@@ -1,8 +1,9 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
-import { IUnit } from "../models/unit";
+import { IUnit, IUnitRead } from "../models/unit";
 import { RootStore } from "./rootStore";
+import { history } from "../";
 
 export default class UnitStore {
   rootStore: RootStore;
@@ -11,8 +12,8 @@ export default class UnitStore {
     makeObservable(this);
   }
 
-  @observable units: IUnit[] = [];
-
+  @observable units: IUnitRead[] = [];
+  @observable currentUnit : IUnitRead | null = null;
   @action listUnits = async () => {
     try {
       const units = await agent.Units.unitList();
@@ -23,7 +24,18 @@ export default class UnitStore {
       console.log(error);
     }
   };
-
+ @action unitDetails = async (id : string) => {
+   try{
+      const unit = await agent.Units.details(id);
+     runInAction(() => {
+       this.currentUnit = unit;
+       history.push(`/unit/${id}`)
+     });
+   }catch (error)
+   {
+     console.log(error);
+   }
+ }
   @action addUnit = async (data: IUnit) => {
     try {
       await agent.Units.create(data);
@@ -35,7 +47,7 @@ export default class UnitStore {
       console.log(error);
     }
   };
-
+  
   @action editUnit = async (data: IUnit) => {
     try {
       await agent.Units.edit(data.id, data);
