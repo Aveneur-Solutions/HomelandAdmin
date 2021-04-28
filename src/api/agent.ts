@@ -5,7 +5,7 @@ import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createUnitFormData } from "./formDataUtil";
 import { history } from "../";
 
-axios.defaults.baseURL = "http://homeland.aveneur.com/api";
+axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
 
 axios.interceptors.request.use(
