@@ -1,4 +1,37 @@
-.unitdash{
+.unittop{
     margin: 5% 20%;
     position: absolute;
+}
+.tbl{
+    padding: 2%;
+}
+.tblpc{
+    margin-top: 2%;
+    margin-right: 2%;
+}
+.tbmh{
+    background-color:#1e212d;
+}
+.homeLandButton{
+    background: cover;
+    background-color: #1e212d;
+    color: goldenrod;
+    height: 5vh;
+    width: 10vw;
+    border-radius: 5px;border: none;
+    box-shadow: 0px 1px 1px black ;
+    color: white;
+    cursor: pointer;
+    /* margin-top: 10vh; */
+    font-weight: 900;
+}
+.action-button{
+    margin: 5px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.filter-unit-div{
+    display: flex;
+    justify-content:space-between;
 }

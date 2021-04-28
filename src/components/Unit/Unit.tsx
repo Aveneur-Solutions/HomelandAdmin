@@ -1,50 +1,43 @@
 import { observer } from "mobx-react-lite";
-import { Fragment, useContext, useEffect, useState } from "react";
-import { IUnit } from "../../models/unit";
+import { Fragment, useContext, useEffect } from "react";
 import { RootStoreContext } from "../../Stores/rootStore";
-import ConfirmationModal from "./DeleteUnitConfirmDiv";
-import UnitForm from "./UnitForm";
+import { history } from "../../";
 import UnitList from "./UnitList";
 import "./unit.css";
+import { Container } from "semantic-ui-react";
 
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
-  const { units, listUnits, addUnit, editUnit } = rootStore.unitStore;
+  const { units, listUnits, setCurrentUnit } = rootStore.unitStore;
 
   useEffect(() => {
     listUnits();
   }, [listUnits]);
 
-  const [form, setForm] = useState(false);
-  const [unit, setUnit] = useState<IUnit | null>(null);
-
+  const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
   return (
     <div className="unittop">
-    <div className="unitdash">
-      <button
-        type="button"
-        style={{ marginBottom: 20 }}
-        onClick={() => {
-          setUnit(null);
-          setForm(!form);
-        }}
-      >
-        {!form ? "Add new flat" : "Go back"}
+      <Container >
+        <button
+          type="button"
+          className="homeLandButton"
+        style={buttonStyle}
+          onClick={() => {
+            setCurrentUnit(null);
+            history.push("/unitForm")
+          }}
+        >
+          Add new flat
       </button>
-      {!form ? (
+
         <Fragment>
           <UnitList
             units={units}
-            setUnit={setUnit}
-            editMode={form}
-            setEditMode={setForm}
           />
         </Fragment>
 
-      ) : (
-        <UnitForm unit={unit} onSubmit={!unit ? addUnit : editUnit} setEditMode={setForm} />
-      )}
-    </div></div>
+
+      </Container></div>
   );
 };
 

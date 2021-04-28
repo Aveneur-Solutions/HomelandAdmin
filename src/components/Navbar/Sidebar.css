@@ -51,7 +51,7 @@
   
   /* Wrapper for item list */
   .bm-item-list {
-    color: #ffffff;
+    color: #1e212d;
     padding: 0.8em;
     text-decoration: none;
   }
@@ -61,6 +61,8 @@
     display: inline-block;
     color: goldenrod;
     padding: 20px;
+    margin-bottom: 5px;
+    border:1px solid black;
     text-decoration: none;
   }
   
@@ -68,3 +70,6 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+.sidenav{
+  background-color: #1e212d;
+}

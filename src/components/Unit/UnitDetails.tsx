@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router';
-import { RouteComponentProps } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import { Card, Container, Grid, Image } from 'semantic-ui-react'
 import { RootStoreContext } from '../../Stores/rootStore'
 interface CustomParams {
@@ -16,22 +15,31 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
       unitDetails(match.params.id);
 
     }
-  }, [currentUnit, match.params.id])
+  }, [currentUnit, match.params.id,unitDetails])
   console.log(currentUnit?.images)
   return (
-    <div>
+    <div className="unittop">
+      
       {currentUnit && <Container>
+        <Link to="/units">
+        <button  className="homeLandButton">Back to List</button> 
+        </Link>
         <Card fluid>
+        
           <Image
             className="cardhover"
             src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![0].imageLocation}
             wrapped
             ui={false}
           />
-          {console.log(currentUnit!.images![0].imageLocation)}
           <Card.Content>
             <Grid columns={3} divided>
               <Grid.Row>
+                <Grid.Column>
+                  <Card.Header className="cardtoprow  ">
+                    Status : <h4 className="cardtoplabel">{currentUnit.isBooked ? "Booked" : "Available"}</h4>
+                  </Card.Header>
+                </Grid.Column>
                 <Grid.Column>
                   <Card.Header className="cardtoprow  ">
                     Unit ID<h4 className="cardtoplabel">{currentUnit.id}</h4>
@@ -39,23 +47,29 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
                 </Grid.Column>
                 <Grid.Column>
                   <Card.Header className="cardtoprow ">
-                    Size<h4 className="cardtoplabel">{currentUnit!.size}</h4>
+                    Total Size<h4 className="cardtoplabel">{currentUnit!.size}</h4>
                             sqft.
                           </Card.Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Card.Header className="cardtoprow ">
-                    Price<h4 className="cardtoplabel">{currentUnit!.price}</h4>
+                    Total Price<h4 className="cardtoplabel">{currentUnit!.price}</h4>
+                            Tk
+                          </Card.Header>
+                </Grid.Column>
+                <Grid.Column>
+                  <Card.Header className="cardtoprow ">
+                    Booking Price<h4 className="cardtoplabel">{currentUnit!.bookingPrice}</h4>
                             Tk
                           </Card.Header>
                 </Grid.Column>
               </Grid.Row>
- 
+
               <Grid.Row>
                 <Grid.Column>
                   <Card.Meta>
                     <span className="cardbottomrow">
-                      Building: {currentUnit!.buildingNumber}
+                      Building Number: {currentUnit!.buildingNumber}
                     </span>
                   </Card.Meta>
                   <Card.Meta>
@@ -75,6 +89,28 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
                       Common Area: {currentUnit!.commonArea}
                     </span>
                   </Card.Meta>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Card.Meta>
+                    <span className="cardbottomrow">
+                      Balconies : {currentUnit!.noOfBalconies}
+                    </span>
+                  </Card.Meta>
+                  <Card.Meta>
+                    <span className="cardbottomrow">
+                      Baths : {currentUnit!.noOfBaths}
+                    </span>
+                  </Card.Meta>
+                </Grid.Column>
+                <Grid.Column>
+                  <Card.Meta>
+                    <span className="cardbottomrow">
+                      Bedrooms: {currentUnit!.noOfBedrooms}
+                    </span>
+                  </Card.Meta>
+
                 </Grid.Column>
               </Grid.Row>
             </Grid>

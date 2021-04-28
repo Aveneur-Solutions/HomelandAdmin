@@ -1,120 +1,27 @@
 import "semantic-ui-css/semantic.min.css";
 import "./Dashboard.css";
-import { Card, Grid, Image, Feed } from "semantic-ui-react";
+import {  Grid  } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
+import DashColumn from "./DashColumn";
 
 const Dashboard = () => (
   <>
     <div className="dashboard">
       <div className="dashtop">
-      <Grid columns="four">
-        <Grid.Row>
-          <Grid.Column>
-            <div className="forcards">
-              <Link to="/unitManagement">
-                <Card fluid>
-                  <Image>
-                    {" "}
-                    <img
-                      className="logoimg"
-                      src={process.env.PUBLIC_URL + "/images/du.jpg"}
-                      alt=""
-                    />
-                  </Image>
-                  <Card.Content>
-                    <Card.Header>Unit Management</Card.Header>
-                  </Card.Content>
-                </Card>
-              </Link>
-            </div>
-          </Grid.Column>
-
-          {/* GALLERY DATA GOES HERE */}
-          <Grid.Column>
-            <div className="forcards">
-              <Link to="/gallery">
-                <Card fluid>
-                  <Image>
-                    {" "}
-                    <img
-                      className="logoimg"
-                      src={process.env.PUBLIC_URL + "/images/gu.png"}
-                      alt=""
-                    />
-                  </Image>
-                  <Card.Content>
-                    <Card.Header>Gallery Management</Card.Header>
-                  </Card.Content>
-                </Card>
-              </Link>
-            </div>
-          </Grid.Column>
-          <Grid.Column>
-            <div className="forcards">
-              <Card fluid>
-                <Image>
-                  {" "}
-                  <img
-                    className="logoimg"
-                    src={process.env.PUBLIC_URL + "/images/cm.png"}
-                    alt=""
-                  />
-                </Image>
-                <Card.Content>
-                  <Card.Header>Customer Management</Card.Header>
-                </Card.Content>
-              </Card>
-            </div>
-          </Grid.Column>
-
-          {/* ACTIVITY LOG DATA STREAM GOES HERE */}
-          <Grid.Column>
-            <div className="forcards">
-              <Card>
-                <Card.Content>
-                  <Card.Header>Activity Log</Card.Header>
-                </Card.Content>
-                <Card.Content>
-                  <Feed>
-                    <Feed.Event>
-                      <Feed.Label image="/images/avatar/small/jenny.jpg" />
-                      <Feed.Content>
-                        <Feed.Date content="1 day ago" />
-                        <Feed.Summary>
-                          You added <a>Jenny Hess</a> to your <a>coworker</a>{" "}
-                          group.
-                        </Feed.Summary>
-                      </Feed.Content>
-                    </Feed.Event>
-
-                    <Feed.Event>
-                      <Feed.Label image="/images/avatar/small/molly.png" />
-                      <Feed.Content>
-                        <Feed.Date content="3 days ago" />
-                        <Feed.Summary>
-                          You added <a>Molly Malone</a> as a friend.
-                        </Feed.Summary>
-                      </Feed.Content>
-                    </Feed.Event>
-
-                    <Feed.Event>
-                      <Feed.Label image="/images/avatar/small/elliot.jpg" />
-                      <Feed.Content>
-                        <Feed.Date content="4 days ago" />
-                        <Feed.Summary>
-                          You added <a>Elliot Baker</a> to your <a>musicians</a>{" "}
-                          group.
-                        </Feed.Summary>
-                      </Feed.Content>
-                    </Feed.Event>
-                  </Feed>
-                </Card.Content>
-              </Card>
-            </div>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+        <Grid columns="four">
+          <Grid.Row>
+            <Grid.Column>
+              <DashColumn routeLink="/units" imageLink="/images/du.jpg" content="Unit Management" />
+            </Grid.Column>
+            {/* GALLERY DATA GOES HERE */}
+            <Grid.Column>
+              <DashColumn routeLink="/gallery" imageLink="/images/gu.png" content="Gallery Management" />
+            </Grid.Column>
+            <Grid.Column>
+              <DashColumn routeLink="/gallery" imageLink="/images/cm.png" content="Customer Management" />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     </div>
   </>

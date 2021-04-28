@@ -2,8 +2,7 @@ import { action, makeObservable, observable, runInAction } from "mobx";
 import agent from "../api/agent";
 import IUser, {
   IUserLogin,
-  IUserLoginWithOtp,
-  IUserRegister,
+  IUserLoginWithOtp
 } from "../models/user";
 import { RootStore } from "./rootStore";
 import { history } from "../";

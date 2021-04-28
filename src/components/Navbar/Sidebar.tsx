@@ -7,61 +7,29 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const rootStore = useContext(RootStoreContext);
-  const {
-    setAdminDash,
-    setUnitVisibility,
-    setGalleryVisibility,
-    setTaxVisibility,
-    setLogVisibility,
-    setFeedbackVisibility,
-    setCustomerVisibility,
-    setSettingsVisibility,
-  } = rootStore.showMenu;
-  const { logout, user } = rootStore.userStore;
+  const { logout } = rootStore.userStore;
 
   return (
     <div className="sidenav">
       <Menu>
-        <button onClick={() => setAdminDash()} id="home" className="menu-item">
-        <Link to="/dashboard">
+        <Link className="bm-item" to="/dashboard">
             Admin Dashboard
          </Link>
-        </button>
-
-        <button
-          onClick={() => setUnitVisibility()}
-          id="unit"
-          className="menu-item"
-        >
-          <Link to="/unitManagement">
+          <Link  className="bm-item" to="/units">
             Unit
-         </Link>
-        </button>
-        <button
-          onClick={() => setGalleryVisibility()}
-          id="Gallery"
-          className="menu-item"
-        >
-        <Link to="/gallery">
+         </Link>  
+        <Link  className="bm-item" to="/gallery">
            Gallery
          </Link>
-        </button>
-        <button
-          onClick={() => setCustomerVisibility()}
-          id="Customer Management"
-          className="menu-item"
-        >
-          Customer Management
-        </button>
-        <button
-          onClick={() => setSettingsVisibility()}
-          className="menu-item--small"
-        >
-          Settings
-        </button>
-        <button className="menu-item" onClick={logout}>
-          LOGOUT
-        </button>
+         <Link  className="bm-item" to="/gallery">
+           Customer Management
+         </Link>
+         <Link  className="bm-item" to="/gallery">
+           Settings
+         </Link>
+         <Link onClick={logout} className="bm-item" to="/">
+         LOGOUT
+         </Link>
       </Menu>
     </div>
   );
