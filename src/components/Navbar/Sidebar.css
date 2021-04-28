@@ -70,6 +70,9 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
-.sidenav{
-  background-color: #1e212d;
-}
+
+  #home{
+    background-color: goldenrod;
+    height: 5vh;
+    width: 100%;
+  }
