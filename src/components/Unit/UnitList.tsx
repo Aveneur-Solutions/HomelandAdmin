@@ -32,6 +32,7 @@ const UnitList: React.FC<IProps> = ({
   }
   return (
     <div>
+      <h1>All Units</h1>
       <table>
         <thead>
           <tr>

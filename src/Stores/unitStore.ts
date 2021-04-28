@@ -1,7 +1,7 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
-import { IUnit } from "../models/unit";
+import { IUnit, IUnitRead } from "../models/unit";
 import { RootStore } from "./rootStore";
 import { history } from "../";
 
@@ -12,8 +12,8 @@ export default class UnitStore {
     makeObservable(this);
   }
 
-  @observable units: IUnit[] = [];
-  @observable currentUnit : IUnit | null = null;
+  @observable units: IUnitRead[] = [];
+  @observable currentUnit : IUnitRead | null = null;
   @action listUnits = async () => {
     try {
       const units = await agent.Units.unitList();
