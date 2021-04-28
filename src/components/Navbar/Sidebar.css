@@ -68,3 +68,8 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+  #home{
+    background-color: goldenrod;
+    height: 5vh;
+    width: 100%;
+  }
