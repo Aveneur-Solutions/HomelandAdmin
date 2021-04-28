@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-import { IUnit } from "../models/unit";
+import { IUnit, IUnitRead } from "../models/unit";
 import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createUnitFormData } from "./formDataUtil";
 import { history } from "../";
@@ -37,9 +37,9 @@ axios.interceptors.response.use(undefined, (error ) => {
   if (status === 500) {
     toast.error("Server Error Check the terminal for more info");
   }
-  if(error.response.status === 409 )
+  if(status === 409 )
   {
-    toast.error("A flat with this id already exists");
+   console.log(data);
   }
   throw error.response;
 });
@@ -79,11 +79,11 @@ const unitForm = {
 };
 
 const Units = {
-  unitList: (): Promise<IUnit[]> => requests.get("/flat"),
+  unitList: (): Promise<IUnitRead[]> => requests.get("/flat"),
   create: (body: IUnit) => unitForm.postForm("/flat", body),
   edit: (id: string, body: IUnit) => unitForm.putForm(`/flat/${id}`, body),
-  details:(id : string) => requests.get(`/flat/${id}`),
-  delete : (id : string) => requests.del(`/flat/${id}`)
+  details:(id : string) : Promise<IUnitRead> => requests.get(`/flat/${id}`),
+  delete : (id : string)  => requests.del(`/flat/${id}`)
 };
 
 export default { Units, User };

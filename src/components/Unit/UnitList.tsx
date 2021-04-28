@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IUnit } from "../../models/unit";
+import { RootStoreContext } from "../../Stores/rootStore";
 import DeleteUnitConfirmDiv from "./DeleteUnitConfirmDiv";
 
 interface IProps {
@@ -18,15 +19,20 @@ const UnitList: React.FC<IProps> = ({
 }) => {
   const [confirmationDiv, showConfirmationDiv] = useState(false);
   const [unitId,setUnitId] = useState("");
+  const rootStore = useContext(RootStoreContext);
+  const { unitDetails } = rootStore.unitStore;
   const handleClickDelete = (id : string) => {
     showConfirmationDiv(true)
     setUnitId(id)
   }
    const handleClickDetails = (id : string) => {
     setUnitId(id)
+    unitDetails(id)
+
   }
   return (
     <div>
+      <h1>All Units</h1>
       <table>
         <thead>
           <tr>
@@ -58,7 +64,7 @@ const UnitList: React.FC<IProps> = ({
                     Edit
                   </button>
                   <button onClick={() => handleClickDelete(id)}>Delete</button>
-                  <button >Details</button>
+                  <button onClick={ () => handleClickDetails(id)} >Details</button>
                 </td>
               </tr>
             );

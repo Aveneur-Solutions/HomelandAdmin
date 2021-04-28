@@ -7,6 +7,7 @@ import IUser, {
 } from "../models/user";
 import { RootStore } from "./rootStore";
 import { history } from "../";
+import { toast } from "react-toastify";
 export default class UserStore {
   rootStore: RootStore;
   constructor(rootStore: RootStore) {
@@ -20,6 +21,7 @@ export default class UserStore {
     try {
       await agent.User.login(body);
     } catch (error) {
+      toast.error("Wrong Credentials !! Retype your Phone Number and Password ");
       throw error;
     }
   };
@@ -33,6 +35,7 @@ export default class UserStore {
         history.push("/dashboard")
       });
     } catch (error) {
+      toast.error("Wrong OTP . Check your message again and retype the OTP ");
       throw error;
     }
   };
@@ -52,5 +55,6 @@ export default class UserStore {
     this.rootStore.commonStore.removeToken();
     this.user = null;
     history.push("./")
+
   };
 }

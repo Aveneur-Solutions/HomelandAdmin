@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router";
 import { IUserLoginWithOtp } from "../../models/user";
 import { RootStoreContext } from "../../Stores/rootStore";
 
