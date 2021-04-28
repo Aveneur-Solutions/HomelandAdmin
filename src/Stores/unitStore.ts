@@ -1,7 +1,7 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
-import { IUnit, IUnitRead } from "../models/unit";
+import { IUnit} from "../models/unit";
 import { RootStore } from "./rootStore";
 import { history } from "../";
 
@@ -12,13 +12,20 @@ export default class UnitStore {
     makeObservable(this);
   }
 
-  @observable units: IUnitRead[] = [];
-  @observable currentUnit : IUnitRead | null = null;
+  @observable units: IUnit[] = [];
+  @observable bookedUnits : IUnit[] = [];
+  @observable allotedUnits : IUnit[] = [];
+  @observable availableUnits : IUnit[] = [];
+  @observable currentUnit : IUnit | null = null;
   @action listUnits = async () => {
     try {
       const units = await agent.Units.unitList();
+      const bookedUnits = units.filter(x => x.isBooked);
+      const availableUnits = units.filter(x => !x.isBooked)
       runInAction(() => {
         this.units = units;
+        this.bookedUnits = bookedUnits;
+        this.availableUnits = availableUnits;
       });
     } catch (error) {
       console.log(error);
@@ -41,6 +48,8 @@ export default class UnitStore {
       await agent.Units.create(data);
       runInAction(() => {
         this.units.push(data);
+        history.push("/units");
+        toast.success(`Flat ${data.id} has been added Successfully`)
       });
     } catch (error) {
       toast.error("A flat with this id already exists");
@@ -55,6 +64,9 @@ export default class UnitStore {
         const unit = this.units.filter((unit) => unit.id === data.id)[0];
         const index = this.units.indexOf(unit);
         this.units[index] = data;
+        this.currentUnit = data;
+        history.push(`/unit/${data.id}`)
+        toast.success(`Flat ${data.id} has been updated Successfully`)
       });
     } catch (error) {
       console.log(error);
@@ -67,10 +79,15 @@ export default class UnitStore {
         console.log("success")
         const unit = this.units.filter((unit) => unit.id !== id);
         this.units = unit;
+        toast.success(`Flat ${id} has been deleted Successfully`)
       })
     }
     catch (error){
       console.log(error)
     }
+  }
+  @action setCurrentUnit = async (unit : IUnit | null) => 
+  {
+    this.currentUnit = unit
   }
 }

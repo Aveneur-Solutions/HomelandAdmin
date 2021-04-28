@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-import { IUnit, IUnitRead } from "../models/unit";
+import { IUnit} from "../models/unit";
 import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createUnitFormData } from "./formDataUtil";
 import { history } from "../";
@@ -79,11 +79,11 @@ const unitForm = {
 };
 
 const Units = {
-  unitList: (): Promise<IUnitRead[]> => requests.get("/flat"),
+  unitList: (): Promise<IUnit[]> => requests.get("/flat"),
   create: (body: IUnit) => unitForm.postForm("/flat", body),
   edit: (id: string, body: IUnit) => unitForm.putForm(`/flat/${id}`, body),
-  details:(id : string) : Promise<IUnitRead> => requests.get(`/flat/${id}`),
-  delete : (id : string)  => requests.del(`/flat/${id}`)
+  details:(id : string) => requests.get(`/flat/${id}`),
+  delete : (id : string) : Promise<IUnit> => requests.del(`/flat/${id}`)
 };
 
 export default { Units, User };

@@ -11,6 +11,7 @@ import { ToastContainer } from "react-toastify";
 import { Route, Switch } from "react-router-dom";
 import { Fragment } from "react";
 import UnitDetails from "./components/Unit/UnitDetails";
+import UnitForm from "./components/Unit/UnitForm";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -35,13 +36,9 @@ const App = () => {
           
               <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/unitManagement" component={Unit} />
+                <Route exact path="/units" component={Unit} />
                 <Route exact path="/gallery" component={Gallery} />
-                {/* <Route
-                  key={location.key}
-                  path={["/createActivity", "/manage/:id"]}
-                  component={ActivityForm}
-                /> */}
+                <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />
                 {/* <Route component={NotFound} /> */}
               </Switch>
@@ -50,18 +47,6 @@ const App = () => {
         )}
       />
     </Fragment>
-      {/* {user ? (
-        <>
-          <Sidebar />
-          <div>
-            {showGallery && <Gallery />}
-            {adminDashboard && <Dashboard />}
-            {showUnit && <Unit />}
-          </div>
-        </>
-      ) : (
-        <Login />
-      )} */}
     </>
   );
 };

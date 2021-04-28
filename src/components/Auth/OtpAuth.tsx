@@ -1,8 +1,6 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { IUserLoginWithOtp } from "../../models/user";
-import { RootStoreContext } from "../../Stores/rootStore";
 
 interface IProps {
   phoneNo: string;
@@ -11,9 +9,6 @@ interface IProps {
 }
 
 const OtpAuth: React.FC<IProps> = ({ phoneNo, func, buttonText }) => {
-  const rootStore = useContext(RootStoreContext);
-  const { user } = rootStore.userStore;
-
   const {
     register,
     handleSubmit,
