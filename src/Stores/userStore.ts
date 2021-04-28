@@ -53,6 +53,7 @@ export default class UserStore {
   @action logout = () => {
     this.rootStore.commonStore.removeToken();
     this.user = null;
-    history.push("/");
+    history.push("./")
+
   };
 }
