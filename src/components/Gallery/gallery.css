@@ -4,7 +4,10 @@
     left: 50%;
     transform: translate(-50%,-50%);
     color: goldenrod;
+    padding: 10%;
+    background-color: #1e212d;
 }
+
 .drag-container{
     border: 2px dashed rgb(255, 124, 2);
     margin-top: 30px;

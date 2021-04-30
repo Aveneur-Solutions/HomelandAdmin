@@ -1,4 +1,4 @@
-import { IImage } from "./image";
+import { IImageUpload } from "./image";
 
 export interface IUnit {
   id: string;
