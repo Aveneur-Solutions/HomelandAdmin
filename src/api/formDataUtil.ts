@@ -1,3 +1,4 @@
+import { IImageUpload } from "../models/image";
 import { IUnit } from "../models/unit";
 
 export const createUnitFormData = (data: IUnit) => {
@@ -20,3 +21,15 @@ export const createUnitFormData = (data: IUnit) => {
 
   return formData;
 };
+
+export const createImageFormData = (data : IImageUpload) => {
+  let formData = new FormData();
+
+  for(let i = 0 ; i<data.file!.length;i++)
+  {
+    formData.append("file",data.file![i])
+  }
+  //formData.append("file",file);
+  formData.append("section",data.section);
+  return formData;
+}
