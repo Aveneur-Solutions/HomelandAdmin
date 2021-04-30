@@ -30,7 +30,8 @@ export default class CommonStore {
      await agent.Admin.imageUpload(images)
       runInAction(() => {
         this.Images = images;
-        toast.success(`Images have been uploaded successfully in ${images.section.toUpperCase()} section`);
+        const length = images.file?.length;
+        toast.success(`${length! > 1 ? `${length} Images have` : `${length} Image has`  } been uploaded successfully in ${images.section.toUpperCase()} section`);
       })
       console.log(this.Images);
     }catch(error)
