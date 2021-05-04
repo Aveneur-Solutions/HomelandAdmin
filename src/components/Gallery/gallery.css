@@ -1,33 +1,91 @@
-.gallery-form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: goldenrod;
-    padding: 10%;
-    background-color: #1e212d;
+.gallery-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: goldenrod;
+  padding: 10%;
+  background-color: #1e212d;
 }
 
-.drag-container{
-    border: 2px dashed rgb(255, 124, 2);
-    margin-top: 30px;
-    padding: 30px;
+.drag-container {
+  border: 2px dashed rgb(255, 124, 2);
+  margin-top: 30px;
+  padding: 30px;
 }
 
-.gallery-option{
+.gallery-option {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+input[type="submit"] {
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+  width: 100px;
+  color: white;
+  background-color: goldenrod;
+}
+
+.gallery-dash {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gall-go-back-btn {
+  padding: 10px;
+  width: 100px;
+  background-color: goldenrod;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transform: translate(0, -50px);
+  cursor: pointer;
+}
+
+.gallery-dash-button-container {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.image-gallery-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.image-gallery-columns {
+  min-width: 22%;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.gallery-images {
+  padding: 10px;
+  border: 1px solid goldenrod;
+}
+
+.image-gallery {
+  width: 66%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .image-gallery {
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    justify-content: space-between;
-}
-
-input[type=radio]{
-    margin-right: 10px;
-}
-
-input[type=submit]{
-    border: none;
-    border-radius: 20px;
-    height: 30px;
-    width: 100px;
-    color: white;
-    background-color: goldenrod;
-}
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+} */

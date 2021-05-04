@@ -18,7 +18,7 @@ const Sidebar = () => {
           <Link  className="bm-item" to="/units">
             Unit
          </Link>  
-        <Link  className="bm-item" to="/gallery">
+        <Link  className="bm-item" to="/galleryDash">
            Gallery
          </Link>
          <Link  className="bm-item" to="/gallery">

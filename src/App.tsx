@@ -12,6 +12,8 @@ import { Route, Switch } from "react-router-dom";
 import { Fragment } from "react";
 import UnitDetails from "./components/Unit/UnitDetails";
 import UnitForm from "./components/Unit/UnitForm";
+import GalleryDash from "./components/Gallery/GalleryDash";
+import ImageGallery from "./components/Gallery/ImageGallery";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -37,6 +39,8 @@ const App = () => {
               <Switch>
               <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/units" component={Unit} />
+                <Route exact path="/galleryDash" component={GalleryDash} />
+                <Route exact path="/imageGallery" component={ImageGallery} />
                 <Route exact path="/gallery" component={Gallery} />
                 <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />

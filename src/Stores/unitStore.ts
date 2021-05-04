@@ -17,6 +17,7 @@ export default class UnitStore {
   @observable allotedUnits : IUnit[] = [];
   @observable availableUnits : IUnit[] = [];
   @observable currentUnit : IUnit | null = null;
+
   @action listUnits = async () => {
     try {
       const units = await agent.Units.unitList();
@@ -31,6 +32,7 @@ export default class UnitStore {
       console.log(error);
     }
   };
+
  @action unitDetails = async (id : string) => {
    try{
       const unit = await agent.Units.details(id);
@@ -43,6 +45,7 @@ export default class UnitStore {
      console.log(error);
    }
  }
+
   @action addUnit = async (data: IUnit) => {
     try {
       await agent.Units.create(data);
@@ -72,6 +75,7 @@ export default class UnitStore {
       console.log(error);
     }
   };
+
   @action deleteUnit = async (id : string) => {
     try{
       await agent.Units.delete(id);
@@ -86,6 +90,7 @@ export default class UnitStore {
       console.log(error)
     }
   }
+  
   @action setCurrentUnit = async (unit : IUnit | null) => 
   {
     this.currentUnit = unit
