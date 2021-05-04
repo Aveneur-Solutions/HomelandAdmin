@@ -23,23 +23,7 @@ export default class CommonStore {
   }
 
   @observable token = localStorage.getItem("jwt");
-  @observable Images : IImageUpload | null = null;
-  @action  UploadImages = async (images : IImageUpload) =>
-  {  
-    try{
-     await agent.Admin.imageUpload(images)
-      runInAction(() => {
-        this.Images = images;
-        const length = images.file?.length;
-        toast.success(`${length! > 1 ? `${length} Images have` : `${length} Image has`  } been uploaded successfully in ${images.section.toUpperCase()} section`);
-      })
-      console.log(this.Images);
-    }catch(error)
-    {
-      toast.error("Couldn't Upload the images")
-    }
- 
-  }
+  
   @action setToken = (token: string) => {
     localStorage.setItem("jwt", token);
     this.token = token;
