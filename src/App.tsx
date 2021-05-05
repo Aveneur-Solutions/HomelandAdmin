@@ -12,6 +12,7 @@ import { Route, Switch } from "react-router-dom";
 import { Fragment } from "react";
 import UnitDetails from "./components/Unit/UnitDetails";
 import UnitForm from "./components/Unit/UnitForm";
+import CustomerDash from "./components/Customer Management/CustomerDash";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -40,6 +41,7 @@ const App = () => {
                 <Route exact path="/gallery" component={Gallery} />
                 <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />
+                <Route path="/customerManagement" component={CustomerDash} />
                 {/* <Route component={NotFound} /> */}
               </Switch>
          

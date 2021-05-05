@@ -12,8 +12,17 @@ export default interface IUser {
   phoneNumber: string;
   token: string;
   fullname: string;
+  role : string;
 }
-
+export interface ICustomer{
+  phoneNumber: string;
+  fullname: string;
+  role : string;
+  noOfFlatsBooked : number;
+  noOfFlatsAlloted : number;
+  address : string;
+  nid : string;
+}
 export interface IUserRegister {
   firstName: string;
   lastName: string;

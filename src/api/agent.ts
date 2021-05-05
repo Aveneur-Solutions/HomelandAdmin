@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { IUnit} from "../models/unit";
-import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
+import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createImageFormData, createUnitFormData } from "./formDataUtil";
 import { history } from "../";
 import { IImageUpload } from "../models/image";
@@ -84,7 +84,8 @@ const form = {
   }
 };
 const Admin = {
-  imageUpload : (data : IImageUpload) => form.galleryPostform("/Adminstrator/Gallery",data)
+  imageUpload : (data : IImageUpload) => form.galleryPostform("/Adminstrator/Gallery",data),
+  customerList : () : Promise<ICustomer[]> => requests.get("/Adminstrator/UserList")
 }
 const User = {
   login: (body: IUserLogin) => requests.post("/user/login", body),
