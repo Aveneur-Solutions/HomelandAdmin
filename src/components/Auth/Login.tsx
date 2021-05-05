@@ -1,9 +1,11 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IUserLogin } from "../../models/user";
 import { RootStoreContext } from "../../Stores/rootStore";
 import OtpAuth from "./OtpAuth";
+import "./auth.css";
+import { Icon } from "semantic-ui-react";
 
 const Login = () => {
   const rootStore = useContext(RootStoreContext);
@@ -11,7 +13,7 @@ const Login = () => {
 
   const [phoneNo, setPhoneNo] = useState("");
   const [otp, setOtp] = useState(false);
-  const[passwordFieldVisibility,setPasswordFieldVisibility] = useState(true);
+  const [passwordFieldVisibility, setPasswordFieldVisibility] = useState(true);
   const {
     register,
     handleSubmit,
@@ -26,7 +28,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <form onSubmit={handleSubmit(onLogin)}>
         <label htmlFor="phoneNumber">Phone Number</label>
         <br />
@@ -41,19 +43,23 @@ const Login = () => {
         <br />
         <label htmlFor="password">Password</label>
         <br />
-        <div >
         <input
           id="password"
           type={passwordFieldVisibility ? "password" : "text"}
-          placeholder="ENTER PASSWORD"
           {...register("password", { required: "Password is required" })}
         />
-        <input type="button" onClick={() => setPasswordFieldVisibility(!passwordFieldVisibility)} value={passwordFieldVisibility ?"Show Password" : "Hide Password" }/>
-        </div>
-        
+        <input
+          id="show"
+          type="button"
+          onClick={() => setPasswordFieldVisibility(!passwordFieldVisibility)}
+          value={passwordFieldVisibility ? "Show" : "Hide"}
+        />
+
         {errors.password && <p>{errors.password.message}</p>}
         <br />
-        <input type="submit" value="Submit" />
+        <div className="submitbtn">
+          <input type="submit" value="Submit" />
+        </div>
       </form>
       {otp && (
         <OtpAuth phoneNo={phoneNo} func={loginWithOtp} buttonText="Login" />
