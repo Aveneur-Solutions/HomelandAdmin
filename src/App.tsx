@@ -15,6 +15,7 @@ import UnitForm from "./components/Unit/UnitForm";
 import CustomerDash from "./components/Customer Management/CustomerDash";
 import GalleryDash from "./components/Gallery/GalleryDash";
 import ImageGallery from "./components/Gallery/ImageGallery";
+import ImageDetails from "./components/Gallery/ImageDetails";
 
 
 const App = () => {
@@ -44,6 +45,7 @@ const App = () => {
                 <Route exact path="/galleryDash" component={GalleryDash} />
                 <Route exact path="/imageGallery" component={ImageGallery} />
                 <Route exact path="/gallery" component={Gallery} />
+                <Route path="/image/:id" component={ImageDetails} />
                 <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />
                 <Route path="/customerManagement" component={CustomerDash} />

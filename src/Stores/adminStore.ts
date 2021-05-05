@@ -1,6 +1,8 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
 import { toast } from "react-toastify";
+import { history } from "..";
 import agent from "../api/agent";
+import { updateImageArray } from "../helper/updateImageArrayUtil";
 import { IImage, IImageUpload } from "../models/image";
 import { RootStore } from "./rootStore";
 
@@ -15,6 +17,7 @@ export default class AdminStore {
   @observable galleryImages: IImage[] = [];
   @observable homeImages: IImage[] = [];
   @observable projectImages: IImage[] = [];
+  @observable image: IImage | null = null;
 
   @action UploadImages = async (images: IImageUpload) => {
     try {
@@ -38,9 +41,47 @@ export default class AdminStore {
     try {
       const images = await agent.Admin.getAllImages();
       runInAction(() => {
-        this.galleryImages = images.filter(image => image.section === "gallery")
-        this.homeImages = images.filter(image => image.section === "home")
-        this.projectImages = images.filter(image => image.section === "projects")
+        this.galleryImages = images.filter(
+          (image) => image.section === "gallery"
+        );
+        this.homeImages = images.filter((image) => image.section === "home");
+        this.projectImages = images.filter(
+          (image) => image.section === "projects"
+        );
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  @action getImage = async (id: string) => {
+    try {
+      const image = await agent.Admin.getImage(id);
+      runInAction(() => {
+        this.image = image;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  @action deleteImage = async (image: IImage) => {
+    try {
+      await agent.Admin.deleteImage(image.id);
+      runInAction(() => {
+        if (image.section === "gallery") {
+          let temp = updateImageArray(this.galleryImages, image);
+          this.galleryImages = temp;
+        }
+        if (image.section === "home") {
+          let temp = updateImageArray(this.homeImages, image);
+          this.homeImages = temp;
+        }
+        if (image.section === "projects") {
+          let temp = updateImageArray(this.projectImages, image);
+          this.projectImages = temp;
+        }
+        history.push("/imageGallery");
       });
     } catch (error) {
       console.log(error);

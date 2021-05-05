@@ -4,6 +4,7 @@ import { history } from "../..";
 import { useContext, useEffect } from "react";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { observer } from "mobx-react-lite";
+import GalleryImage from "./GalleryImage";
 
 const ImageGallery = () => {
   const rootStore = useContext(RootStoreContext);
@@ -35,12 +36,7 @@ const ImageGallery = () => {
                 <Grid.Row>
                   {galleryImages.map((image) => (
                     <Grid.Column key={image.id}>
-                      <Image
-                        src={
-                          "https://www.homeland.aveneur.com/Images" +
-                          image.imageLocation
-                        }
-                      />
+                      <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
                 </Grid.Row>
@@ -54,12 +50,7 @@ const ImageGallery = () => {
                 <Grid.Row>
                   {homeImages.map((image) => (
                     <Grid.Column key={image.id}>
-                      <Image
-                        src={
-                          "https://www.homeland.aveneur.com/Images" +
-                          image.imageLocation
-                        }
-                      />
+                      <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
                 </Grid.Row>
@@ -73,12 +64,7 @@ const ImageGallery = () => {
                 <Grid.Row>
                   {projectImages.map((image) => (
                     <Grid.Column key={image.id}>
-                      <Image
-                        src={
-                          "https://www.homeland.aveneur.com/Images" +
-                          image.imageLocation
-                        }
-                      />
+                      <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
                 </Grid.Row>
