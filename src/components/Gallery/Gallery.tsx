@@ -34,6 +34,7 @@ const Gallery = () => {
     formState: { errors },
   } = useForm<IImageUpload>();
   return (
+    <div className="formbg">
     <div className="gallery-form">
       <button
         className="gall-go-back-btn"
@@ -80,6 +81,7 @@ const Gallery = () => {
           )}
         </div>
       </div>
+    </div>
     </div>
   );
 };
