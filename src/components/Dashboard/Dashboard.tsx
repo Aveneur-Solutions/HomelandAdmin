@@ -18,7 +18,7 @@ const Dashboard = () => (
               <DashColumn routeLink="/gallery" imageLink="/images/gu.png" content="Gallery Management" />
             </Grid.Column>
             <Grid.Column>
-              <DashColumn routeLink="/gallery" imageLink="/images/cm.png" content="Customer Management" />
+              <DashColumn routeLink="/customerManagement" imageLink="/images/cm.png" content="Customer Management" />
             </Grid.Column>
           </Grid.Row>
         </Grid>
