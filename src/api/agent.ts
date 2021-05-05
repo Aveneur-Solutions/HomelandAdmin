@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 import { IUnit} from "../models/unit";
 import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { createImageFormData, createUnitFormData } from "./formDataUtil";
+
 import { history } from "../";
-import { IImageUpload } from "../models/image";
+import { IImage, IImageUpload } from "../models/image";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
@@ -85,7 +86,8 @@ const form = {
 };
 const Admin = {
   imageUpload : (data : IImageUpload) => form.galleryPostform("/Adminstrator/Gallery",data),
-  customerList : () : Promise<ICustomer[]> => requests.get("/Adminstrator/UserList")
+  customerList : () : Promise<ICustomer[]> => requests.get("/Adminstrator/UserList"),
+  getAllImages: (): Promise<IImage[]> => requests.get("/Adminstrator/Images"),
 }
 const User = {
   login: (body: IUserLogin) => requests.post("/user/login", body),

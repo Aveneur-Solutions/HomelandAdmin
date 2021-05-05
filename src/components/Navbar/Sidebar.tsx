@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { logout } = rootStore.userStore;
 
   return (
-    <div className="sidenav">
+    <div>
       <Menu>
         <Link className="bm-item" to="/dashboard">
             Admin Dashboard
@@ -18,7 +18,7 @@ const Sidebar = () => {
           <Link  className="bm-item" to="/units">
             Unit
          </Link>  
-        <Link  className="bm-item" to="/gallery">
+        <Link  className="bm-item" to="/galleryDash">
            Gallery
          </Link>
          <Link  className="bm-item" to="/customerManagement">
