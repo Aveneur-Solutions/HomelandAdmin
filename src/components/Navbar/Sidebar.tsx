@@ -10,7 +10,7 @@ const Sidebar = () => {
   const { logout } = rootStore.userStore;
 
   return (
-    <div>
+    <div className="bm-main">
       <Menu>
         <Link className="bm-item" to="/dashboard">
             Admin Dashboard

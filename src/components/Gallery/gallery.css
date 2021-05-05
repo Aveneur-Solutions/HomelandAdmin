@@ -36,8 +36,14 @@ input[type="submit"] {
   height: 100vh;
   width: 100vw;
   display: flex;
+  /* background-color: yellow; */
   justify-content: center;
   align-items: center;
+}
+.formbg{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(165, 165, 165);
 }
 
 .gall-go-back-btn {
