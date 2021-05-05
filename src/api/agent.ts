@@ -2,10 +2,9 @@ import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { IUnit} from "../models/unit";
 import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user";
-import { createImageFormData, createUnitFormData } from "./formDataUtil";
-
 import { history } from "../";
 import { IImage, IImageUpload } from "../models/image";
+import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";

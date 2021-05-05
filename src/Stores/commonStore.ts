@@ -1,7 +1,6 @@
 import { action, makeObservable, observable, reaction, runInAction } from "mobx";
 import { toast } from "react-toastify";
 import agent from "../api/agent";
-import { IImageUpload, UploadableFiles } from "../models/image";
 import { RootStore } from "./rootStore";
 
 export default class CommonStore {
