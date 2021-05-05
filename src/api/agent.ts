@@ -1,13 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-import { IUnit } from "../models/unit";
-import IUser, { IUserLogin, IUserLoginWithOtp } from "../models/user";
-import {
-  createImageFormData,
-  createUnitFormData,
-} from "../helper/formDataUtil";
+import { IUnit} from "../models/unit";
+import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { history } from "../";
 import { IImage, IImageUpload } from "../models/image";
+import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
@@ -87,8 +84,8 @@ const form = {
 };
 
 const Admin = {
-  imageUpload: (data: IImageUpload) =>
-    form.galleryPostform("/Adminstrator/Gallery", data),
+  imageUpload : (data : IImageUpload) => form.galleryPostform("/Adminstrator/Gallery",data),
+  customerList : () : Promise<ICustomer[]> => requests.get("/Adminstrator/UserList"),
   getAllImages: (): Promise<IImage[]> => requests.get("/Adminstrator/Images"),
   getImage: (id: string): Promise<IImage> =>
     requests.get(`/Adminstrator/Images/${id}`),

@@ -12,9 +12,11 @@ import { Route, Switch } from "react-router-dom";
 import { Fragment } from "react";
 import UnitDetails from "./components/Unit/UnitDetails";
 import UnitForm from "./components/Unit/UnitForm";
+import CustomerDash from "./components/Customer Management/CustomerDash";
 import GalleryDash from "./components/Gallery/GalleryDash";
 import ImageGallery from "./components/Gallery/ImageGallery";
 import ImageDetails from "./components/Gallery/ImageDetails";
+
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -46,6 +48,7 @@ const App = () => {
                 <Route path="/image/:id" component={ImageDetails} />
                 <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />
+                <Route path="/customerManagement" component={CustomerDash} />
                 {/* <Route component={NotFound} /> */}
               </Switch>
          

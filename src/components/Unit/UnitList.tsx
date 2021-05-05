@@ -58,58 +58,7 @@ const UnitList: React.FC<IProps> = ({
       case 4: setUnits(allotedUnits); setFilter("Alloted"); break;
     }
   }
-  // return (
-  //   <div>
-  //     <Dropdown placeholder=" Filter Units" onChange={handleChange}  options={unitFilters} selection />
-  //     {unitsTobeDisplayed.length !== 0 ? <Fragment>
-  //       <h1>{filter} Units</h1>
-  //       <table>
-  //         <thead>
-  //           <tr>
-  //             <th>Id</th>
-  //             <th>Size</th>
-  //             <th>Level</th>
-  //             <th>Building No.</th>
-  //             <th>Price</th>
-  //             <th>Status</th>
-  //             <th></th>
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           {unitsTobeDisplayed.map((unit) => {
-  //             const { id, size, level, buildingNumber, price, isBooked } = unit;
-  //             return (
-  //               <tr key={id}>
-  //                 <td>{id}</td>
-  //                 <td>{size}</td>
-  //                 <td>{level}</td>
-  //                 <td>{buildingNumber}</td>
-  //                 <td>{price}</td>
-  //                 <td>{isBooked ? "Booked" : "Available"}</td>
-  //                 <td>
-  //                   {(filter === "All" || filter === "Available") && <Fragment>
-  //                     <button
-  //                       onClick={() => {
-  //                         setCurrentUnit(unit);
-  //                         history.push("/unitForm")
-  //                       }}
-  //                     >
-  //                       Edit
-  //                 </button>
-  //                     <button onClick={() => handleClickDelete(id)}>Delete</button></Fragment>}
 
-  //                   <button onClick={() => handleClickDetails(id)}>Details</button>
-  //                 </td>
-  //               </tr>
-  //             );
-  //           })}
-  //         </tbody>
-  //       </table>
-  //     </Fragment> : <div>No Units Do Display </div>}
-
-  //     {confirmationDiv && <DeleteUnitConfirmDiv id={unitId} showModal={showConfirmationDiv} />}
-  //   </div>
-  // );
   const isTabletOrMobileDevice = useMediaQuery({
     query: "(max-device-width: 1224px)",
   });

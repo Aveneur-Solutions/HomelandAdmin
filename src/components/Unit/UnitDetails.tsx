@@ -15,17 +15,21 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
       unitDetails(match.params.id);
 
     }
-  }, [currentUnit, match.params.id,unitDetails])
+  }, [currentUnit, match.params.id, unitDetails])
   console.log(currentUnit?.images)
   return (
     <div className="unittop">
-      
+
       {currentUnit && <Container>
-        <Link to="/units">
-        <button  className="homeLandButton">Back to List</button> 
-        </Link>
+        <div style={{display:"flex",justifyContent:"space-between"}}>
+          <Link to="/units">
+            <button className="homeLandButton">Back to List</button>
+          </Link>
+          <button className="homeLandButton">Create allotment</button>
+        </div>
+
         <Card fluid>
-        
+
           <Image
             className="cardhover"
             src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![0].imageLocation}
