@@ -4,6 +4,8 @@ import agent from "../api/agent";
 import { IUnit} from "../models/unit";
 import { RootStore } from "./rootStore";
 import { history } from "../";
+import IBooking from "../models/booking";
+import ITransfer from "../models/transfers";
 
 export default class UnitStore {
   rootStore: RootStore;
@@ -13,6 +15,8 @@ export default class UnitStore {
   }
 
   @observable units: IUnit[] = [];
+  @observable bookings : IBooking[] = [];
+  @observable transfers : ITransfer[] = [];
   @observable bookedUnits : IUnit[] = [];
   @observable allotedUnits : IUnit[] = [];
   @observable availableUnits : IUnit[] = [];
@@ -32,6 +36,30 @@ export default class UnitStore {
       console.log(error);
     }
   };
+  @action listAllBookings = async () => {
+      try{
+       const bookings = await agent.Units.getAllBookings();
+       runInAction(() => {
+         this.bookings = bookings
+       })
+
+      }catch(error)
+      {
+        console.log(error)
+      }
+  }
+  @action listAllTransfers = async () => {
+    try{
+     const transfers = await agent.Units.getAllTransfers();
+     runInAction(() => {
+       this.transfers = transfers
+     })
+
+    }catch(error)
+    {
+      console.log(error)
+    }
+}
 
  @action unitDetails = async (id : string) => {
    try{

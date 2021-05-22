@@ -5,6 +5,8 @@ import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user"
 import { history } from "../";
 import { IImage, IImageUpload } from "../models/image";
 import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
+import IBooking from "../models/booking";
+import ITransfer from "../models/transfers";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
@@ -90,6 +92,7 @@ const Admin = {
   getImage: (id: string): Promise<IImage> =>
     requests.get(`/Adminstrator/Images/${id}`),
   deleteImage: (id: string) => requests.del(`/Adminstrator/Images/${id}`),
+ 
 };
 
 const User = {
@@ -105,6 +108,8 @@ const Units = {
   edit: (id: string, body: IUnit) => form.unitPutForm(`/flat/${id}`, body),
   details: (id: string) => requests.get(`/flat/${id}`),
   delete: (id: string): Promise<IUnit> => requests.del(`/flat/${id}`),
+  getAllBookings : () : Promise<IBooking[]> => requests.get("/flat/AllBookings"),
+  getAllTransfers : () : Promise<ITransfer[]> => requests.get("/flat/AllTransfers")
 };
 
 export default { Units, User, Admin };
