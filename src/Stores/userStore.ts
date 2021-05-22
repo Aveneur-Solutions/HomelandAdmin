@@ -30,8 +30,14 @@ export default class UserStore {
       const user = await agent.User.loginWithOtp(body);
       runInAction(() => {
         this.user = user;
-        this.rootStore.commonStore.setToken(user.token);
-        history.push("/dashboard")
+        if(user.role === "Super Admin")
+        {
+          this.rootStore.commonStore.setToken(user.token);
+          history.push("/dashboard")
+
+        }
+        else toast.error("Sorry Only Internals can log in");
+       
       });
     } catch (error) {
       toast.error("Wrong OTP . Check your message again and retype the OTP ");

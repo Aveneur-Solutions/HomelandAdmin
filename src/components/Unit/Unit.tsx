@@ -5,14 +5,18 @@ import { history } from "../../";
 import UnitList from "./UnitList";
 import "./unit.css";
 import { Container } from "semantic-ui-react";
+import BookingsList from "./BookingsList";
+import TransferList from "./TransferList";
 
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
-  const { units, listUnits, setCurrentUnit } = rootStore.unitStore;
+  const { units, listUnits,bookings,transfers, setCurrentUnit ,listAllBookings,listAllTransfers} = rootStore.unitStore;
 
   useEffect(() => {
     listUnits();
-  }, [listUnits]);
+    listAllBookings();
+    listAllTransfers();
+  }, [listUnits,listAllBookings,listAllTransfers]);
 
   const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
   return (
@@ -34,6 +38,8 @@ const Unit = () => {
           <UnitList
             units={units}
           />
+          <BookingsList bookings={bookings}/>
+          <TransferList transfers={transfers}/>
         </Fragment>
 
 
