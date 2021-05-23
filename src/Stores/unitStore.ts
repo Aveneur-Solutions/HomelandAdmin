@@ -94,9 +94,10 @@ export default class UnitStore {
       runInAction(() => {
         const unit = this.units.filter((unit) => unit.id === data.id)[0];
         const index = this.units.indexOf(unit);
+        data.images = (data.images ? data.images :  this.units[index].images);
         this.units[index] = data;
         this.currentUnit = data;
-        history.push(`/unit/${data.id}`)
+        history.push(`/units`)
         toast.success(`Flat ${data.id} has been updated Successfully`)
       });
     } catch (error) {
