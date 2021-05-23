@@ -153,7 +153,7 @@ const UnitForm = () => {
           <input id="images" type="file" {...register("images")} />
           <br />
           {errors.downPaymentDays && <p>{errors.downPaymentDays.message}</p>}
-          <input style={{ marginTop: 10 }} type="submit" value="Submit" />
+          <input style={{ marginTop: 10,cursor:"pointer" }} type="submit" value="Submit" />
         </form>
       </Container>
 

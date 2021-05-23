@@ -32,7 +32,7 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
 
           <Image
             className="cardhover"
-            src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![0].imageLocation}
+            src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![currentUnit.images.length-1].imageLocation}
             wrapped
             ui={false}
           />
