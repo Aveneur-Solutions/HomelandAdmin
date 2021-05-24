@@ -38,8 +38,10 @@ const Unit = () => {
           <UnitList
             units={units}
           />
+          <div className="list">
           <BookingsList bookings={bookings}/>
           <TransferList transfers={transfers}/>
+          </div>
         </Fragment>
 
 

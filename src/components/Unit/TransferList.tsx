@@ -6,15 +6,15 @@ interface IProps{
 }
 const TransferList : React.FC<IProps> = ({transfers}) => {
     return (
-        <div>
-            <Header>List of all Transfers</Header>
-            <Table celled textAlign="center" padded >
+        <div style={{margin:"0 auto"}}>
+            <Header style={{marginTop:"5vh", textAlign:"center"}}>List of all Transfers</Header>
+            <Table celled textAlign="center" padded  >
                 <Table.Header >
                     <Table.Row >
                         <Table.HeaderCell style={{ backgroundColor: "#1e212d", color: "goldenrod" }}>UNIT ID</Table.HeaderCell>
                         <Table.HeaderCell style={{ backgroundColor: "#1e212d", color: "goldenrod" }}>Transferer's Name</Table.HeaderCell>
                         <Table.HeaderCell style={{ backgroundColor: "#1e212d", color: "goldenrod" }}>Reciever's Name</Table.HeaderCell>
-                        <Table.HeaderCell style={{ backgroundColor: "#1e212d", color: "goldenrod" }}>Date Transfered</Table.HeaderCell>
+                        <Table.HeaderCell style={{ backgroundColor: "#1e212d", color: "goldenrod" }}>Date Transferred</Table.HeaderCell>
 
                     </Table.Row>
                 </Table.Header>
