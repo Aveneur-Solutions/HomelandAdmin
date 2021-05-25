@@ -16,6 +16,7 @@ import CustomerDash from "./components/Customer Management/CustomerDash";
 import GalleryDash from "./components/Gallery/GalleryDash";
 import ImageGallery from "./components/Gallery/ImageGallery";
 import ImageDetails from "./components/Gallery/ImageDetails";
+import CustomerDetails from "./components/Customer Management/CustomerDetails";
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
                 <Route exact path="/unitForm" component={UnitForm} />
                 <Route path="/unit/:id" component={UnitDetails} />
                 <Route path="/customerManagement" component={CustomerDash} />
+                <Route path="/customerDetails" component={CustomerDetails}/>
                 {/* <Route component={NotFound} /> */}
               </Switch>
          

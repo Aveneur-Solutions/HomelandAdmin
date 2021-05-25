@@ -10,8 +10,11 @@ interface IProps {
 const DeleteUnitConfirmDiv : React.FC<IProps> = ({showModal,id}) => {
     const footerStyle = {
         width: "100%",
-        backgroundColor: "#1b1b1b",
+        marginTop:"10px",
+        // backgroundColor: "goldenrod",
         color: "white",
+        display:"flex",
+        justifyContent:"center"
     };
     const rootStore = useContext(RootStoreContext)
     const {deleteUnit} = rootStore.unitStore;
@@ -24,20 +27,20 @@ const DeleteUnitConfirmDiv : React.FC<IProps> = ({showModal,id}) => {
         <div>
            
                 <div
-                    style={{ width: "100%", backgroundColor: "#1b1b1b", color: "white" }}
+                    style={{ width: "100%" }}
                 >
-                    <h2 className="mx-auto modalHeader">
+                    <h2 className="mx-auto modalHeader deleteunit">
                         Do you really want to delete {id}?
                     </h2>
                 </div>
                 <div  style={footerStyle}>         
                         <button
-                            className="submitButton mr-auto"
+                            className="confirmButton mr-auto"
                             onClick={() => handleSubmit()}
                         >
                             Yes
                         </button>
-                        <button className="dangerButton" onClick={() => showModal(false)}>
+                        <button className="confirmButton" onClick={() => showModal(false)}>
                            Cancel
                        </button>
                 </div>

@@ -9,7 +9,7 @@ interface IProps {
 }
 const CustomerList: React.FC<IProps> = ({ customer }) => {
   return (
-    <div>
+    <div style={{position:"absolute", margin:"5vh 8%"}}>
       <Table celled textAlign="center" padded>
         <Table.Header>
           <Table.Row>
@@ -65,7 +65,7 @@ const CustomerList: React.FC<IProps> = ({ customer }) => {
                   <p>{item.noOfFlatsAlloted}</p>
                 </Table.Cell>
                 <Table.Cell>
-                  <Link to="">
+                  <Link to="/customerDetails">
                     <button
                       className="action-button"
                       style={{ display: "flex", justifyContent: "center", alignItems:"center" }}
