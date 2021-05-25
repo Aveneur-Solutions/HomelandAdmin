@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { slide as Menu } from "react-burger-menu";
+import { push as Menu } from "react-burger-menu";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
