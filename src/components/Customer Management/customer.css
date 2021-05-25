@@ -18,7 +18,7 @@
 
   td,
   th {
-    border: 1px solid #dddddd;
+    border: 1px solid #1e212d;
     padding: 8px;
   }
 
@@ -28,4 +28,14 @@
   .customerBg{
       height: 100vh;
       width: 100vw;
+  }
+
+.backBtn{
+    background-color: #1e212d;
+    color: goldenrod;width: 10vw;
+    border-radius: 20px;
+    height: 5vh;
+    margin: 2% 0% 0% 21%;
+    cursor: pointer;
+    justify-content:center;
   }
