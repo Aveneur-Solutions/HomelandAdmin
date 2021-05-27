@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useForm } from "react-hook-form";
 import { IUnit } from "../../models/unit";
+import "../shared/shared.css"
 import { RootStoreContext } from "../../Stores/rootStore";
 import { useContext } from "react"
 import { Container } from "semantic-ui-react";
@@ -32,7 +33,7 @@ const UnitForm = () => {
           {unit ? (
             <>
               <p>{unit.id}</p>
-              <input type="hidden" defaultValue={unit.id} {...register("id")} />
+              <input className="uiInput" type="hidden" defaultValue={unit.id} {...register("id")} />
             </>
           ) : (
             <>
@@ -40,108 +41,120 @@ const UnitForm = () => {
               <br />
               <input
                 id="id"
+                className="uiInput"
                 {...register("id", { required: "ID must be assigned" })}
               />
               <br />
-              {errors.id && <p>{errors.id.message}</p>}
+              {errors.id && <p className="errorMsg">{errors.id.message}</p>}
             </>
           )}
           <label htmlFor="size">Size</label>
           <br />
           <input
             id="size"
+            className="uiInput"
             defaultValue={unit?.size}
             {...register("size", { required: "This field is required" })}
           />
           <br />
-          {errors.size && <p>{errors.size.message}</p>}
+          {errors.size && <p className="errorMsg">{errors.size.message}</p>}
           <label htmlFor="price">Price</label>
           <br />
           <input
             id="price"
+            className="uiInput"
             defaultValue={unit?.price}
             {...register("price", { required: "This field is required" })}
           />
           <br />
-          {errors.price && <p>{errors.price.message}</p>}
+          {errors.price && <p className="errorMsg">{errors.price.message}</p>}
           <label htmlFor="level">Level</label>
           <br />
           <input
             id="level"
+            className="uiInput"
             defaultValue={unit?.level}
             {...register("level", { required: "This field is required" })}
           />
           <br />
-          {errors.level && <p>{errors.level.message}</p>}
+          {errors.level && <p className="errorMsg">{errors.level.message}</p>}
           <label htmlFor="buildingNumber">Building Number</label>
           <br />
           <input
             id="buildingNumber"
+            className="uiInput"
             defaultValue={unit?.buildingNumber}
             {...register("buildingNumber", {
               required: "This field is required",
             })}
           />
           <br />
-          {errors.buildingNumber && <p>{errors.buildingNumber.message}</p>}
+          {errors.buildingNumber && <p className="errorMsg">{errors.buildingNumber.message}</p>}
           <label htmlFor="noOfBedrooms">No. of Bedrooms</label>
           <br />
           <input
             id="noOfBedrooms"
+            className="uiInput"
             defaultValue={unit?.noOfBedrooms}
             {...register("noOfBedrooms", { required: "This field is required" })}
           />
           <br />
-          {errors.noOfBedrooms && <p>{errors.noOfBedrooms.message}</p>}
+          {errors.noOfBedrooms && <p className="errorMsg">{errors.noOfBedrooms.message}</p>}
           <label htmlFor="noOfBaths">No. of Baths</label>
           <br />
           <input
             id="noOfBaths"
+            className="uiInput"
             defaultValue={unit?.noOfBaths}
             {...register("noOfBaths", { required: "This field is required" })}
           />
           <br />
-          {errors.noOfBaths && <p>{errors.noOfBaths.message}</p>}
+          {errors.noOfBaths && <p className="errorMsg">{errors.noOfBaths.message}</p>}
           <label htmlFor="noOfBalconies">No. of Balconies</label>
           <br />
           <input
             id="noOfBalconies"
+            className="uiInput"
             defaultValue={unit?.noOfBalconies}
             {...register("noOfBalconies", { required: "This field is required" })}
           />
           <br />
-          {errors.noOfBalconies && <p>{errors.noOfBalconies.message}</p>}
+          {errors.noOfBalconies && <p className="errorMsg">{errors.noOfBalconies.message}</p>}
           <label htmlFor="netArea">Net Area</label>
           <br />
           <input
             id="netArea"
+            className="uiInput"
             defaultValue={unit?.netArea}
             {...register("netArea", { required: "This field is required" })}
           />
           <br />
-          {errors.netArea && <p>{errors.netArea.message}</p>}
+          {errors.netArea && <p className="errorMsg">{errors.netArea.message}</p>}
           <label htmlFor="commonArea">Common Area</label>
           <br />
           <input
             id="commonArea"
+            className="uiInput"
             defaultValue={unit?.commonArea}
             {...register("commonArea", { required: "This field is required" })}
           />
           <br />
-          {errors.commonArea && <p>{errors.commonArea.message}</p>}
+          {errors.commonArea && <p className="errorMsg">{errors.commonArea.message}</p>}
           <label htmlFor="bookingPrice">Booking Price</label>
           <br />
           <input
             id="bookingPrice"
+            className="uiInput"
             defaultValue={unit?.bookingPrice}
             {...register("bookingPrice", { required: "This field is required" })}
           />
           <br />
-          {errors.bookingPrice && <p>{errors.bookingPrice.message}</p>}
+          {errors.bookingPrice && <p className="errorMsg">{errors.bookingPrice.message}</p>}
           <label htmlFor="downPaymentDays">Down Payment Days</label>
           <br />
           <input
             id="downPaymentDays"
+            className="uiInput"
             defaultValue={unit?.downPaymentDays}
             {...register("downPaymentDays", {
               required: "This field is required",
@@ -150,10 +163,10 @@ const UnitForm = () => {
           <br />
           <label htmlFor="images">Upload picture</label>
           <br />
-          <input id="images" type="file" {...register("images")} />
+          <input className="uiInput" id="images" type="file" {...register("images")} />
           <br />
-          {errors.downPaymentDays && <p>{errors.downPaymentDays.message}</p>}
-          <input style={{ marginTop: 10,cursor:"pointer" }} type="submit" value="Submit" />
+          {errors.downPaymentDays && <p className="errorMsg">{errors.downPaymentDays.message}</p>}
+          <input style={{ marginTop: 10,cursor:"pointer", marginBottom: 15}} type="submit" value="Submit" />
         </form>
       </Container>
 

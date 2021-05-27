@@ -37,6 +37,7 @@ const ImageDetails: React.FC<RouteComponentProps<CustomParams>> = ({
               }
               action={() => deleteImage(image)}
             />
+            <div style={{marginTop:15}}></div>
           </>
         )}
       </div>
