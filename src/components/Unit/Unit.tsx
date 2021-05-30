@@ -36,14 +36,14 @@ const Unit = () => {
         >
           Add new flat
       </button>
-
         <Fragment>
           {loading ? <MyLoader /> : <UnitList units={units} />}
-          {loading ? <MyLoader /> :
-            <div className="list">
-              <BookingsList bookings={bookings} />
-              <TransferList transfers={transfers} />
-            </div>}
+            {loading ? <MyLoader /> :
+          <div className="list">
+           <BookingsList bookings={bookings} />
+          <TransferList transfers={transfers} />
+          </div>
+          }
 
         </Fragment>
       </Container></div>
