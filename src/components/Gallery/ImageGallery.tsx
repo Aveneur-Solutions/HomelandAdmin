@@ -35,14 +35,11 @@ const ImageGallery = () => {
             <div className="gallery-images">
 
               <Grid columns={3}>
-
-                <Grid.Row>
                   {galleryImages.map((image) => (
                     <Grid.Column key={image.id}>
                       <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
-                </Grid.Row>
               </Grid>
             </div>
           </div>
@@ -50,27 +47,28 @@ const ImageGallery = () => {
             <h2>Home</h2>
             <div className="gallery-images">
               <Grid columns={3}>
-                <Grid.Row>
                   {homeImages.map((image) => (
                     <Grid.Column key={image.id}>
                       <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
-                </Grid.Row>
               </Grid>
+              {homeImages.map((image) => (
+                <div key={image.id}>
+                  <GalleryImage image={image} />
+                  </div>
+                  ))}
             </div>
           </div>
           <div className="image-gallery-columns">
             <h2>Projects</h2>
             <div className="gallery-images">
               <Grid columns={3}>
-                <Grid.Row>
                   {projectImages.map((image) => (
                     <Grid.Column key={image.id}>
                       <GalleryImage image={image} />
                     </Grid.Column>
                   ))}
-                </Grid.Row>
               </Grid>
             </div>
           </div>

@@ -38,11 +38,12 @@ const Unit = () => {
 
         <Fragment>
           {loading ? <MyLoader /> : <UnitList units={units} />}
-          {loading ? <MyLoader /> : <BookingsList bookings={bookings} />}
+          <div className="list">
+           {loading ? <MyLoader /> : <BookingsList bookings={bookings} />}
           {loading ? <MyLoader /> : <TransferList transfers={transfers} />}
+          </div>
+
         </Fragment>
-
-
       </Container></div>
   );
 };

@@ -65,6 +65,7 @@ input[type="submit"] {
 
 .image-gallery-container {
   display: flex;
+  flex-direction: column;
   width: 100%;
   justify-content: space-between;
 }
