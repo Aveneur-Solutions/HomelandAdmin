@@ -4,9 +4,10 @@ import { Container } from 'semantic-ui-react'
 import { RootStoreContext } from '../../Stores/rootStore'
 import CustomerList from './CustomerList'
 import "./customer.css"
+import MyLoader from '../Common/MyLoader'
 const CustomerDash = () => {
     const rootStore = useContext(RootStoreContext)
-    const { customerList, getCustomerList } = rootStore.customerStore;
+    const { customerList, getCustomerList ,loading} = rootStore.customerStore;
 
     useEffect(() => {
         if (!customerList) {
@@ -16,7 +17,8 @@ const CustomerDash = () => {
     return (
         <div className="customertop">
             <Container>
-                <CustomerList customer={customerList!} />
+                {loading ? <MyLoader /> : <CustomerList customer={customerList!} />}
+                
             </Container>
 
         </div>

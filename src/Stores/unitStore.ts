@@ -21,9 +21,10 @@ export default class UnitStore {
   @observable allotedUnits : IUnit[] = [];
   @observable availableUnits : IUnit[] = [];
   @observable currentUnit : IUnit | null = null;
-
+  @observable loading : boolean = true;
   @action listUnits = async () => {
     try {
+      this.loading = true;
       const units = await agent.Units.unitList();
       const bookedUnits = units.filter(x => x.isBooked);
       const availableUnits = units.filter(x => !x.isBooked)
@@ -31,16 +32,20 @@ export default class UnitStore {
         this.units = units;
         this.bookedUnits = bookedUnits;
         this.availableUnits = availableUnits;
+        this.loading = false;
       });
+      
     } catch (error) {
       console.log(error);
     }
   };
   @action listAllBookings = async () => {
       try{
+        this.loading = true;
        const bookings = await agent.Units.getAllBookings();
        runInAction(() => {
-         this.bookings = bookings
+         this.bookings = bookings;
+         this.loading = false;
        })
 
       }catch(error)
@@ -50,9 +55,11 @@ export default class UnitStore {
   }
   @action listAllTransfers = async () => {
     try{
+      this.loading = true;
      const transfers = await agent.Units.getAllTransfers();
      runInAction(() => {
-       this.transfers = transfers
+       this.transfers = transfers;
+       this.loading = false;
      })
 
     }catch(error)
