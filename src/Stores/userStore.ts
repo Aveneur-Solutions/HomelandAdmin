@@ -33,6 +33,7 @@ export default class UserStore {
         if(user.role === "Super Admin")
         {
           this.rootStore.commonStore.setToken(user.token);
+          this.rootStore.commonStore.loggedIn = true;
           history.push("/dashboard")
 
         }
@@ -50,6 +51,7 @@ export default class UserStore {
       const user = await agent.User.currentUser();
       runInAction(() => {
         this.user = user;
+        this.rootStore.commonStore.loggedIn = true;
       });
     } catch (error) {
       console.log(error);
@@ -59,6 +61,7 @@ export default class UserStore {
   @action logout = () => {
     this.rootStore.commonStore.removeToken();
     this.user = null;
+    this.rootStore.commonStore.loggedIn = false;
     history.push("./")
 
   };

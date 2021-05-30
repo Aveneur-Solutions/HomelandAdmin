@@ -1,9 +1,8 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Icon, Table } from "semantic-ui-react";
-import IUser, { ICustomer } from "../../models/user";
-import { RootStoreContext } from "../../Stores/rootStore";
+import  { ICustomer } from "../../models/user";
 interface IProps {
   customer: ICustomer[];
 }

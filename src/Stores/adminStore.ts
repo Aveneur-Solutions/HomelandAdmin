@@ -4,6 +4,7 @@ import { history } from "..";
 import agent from "../api/agent";
 import { updateImageArray } from "../helper/updateImageArrayUtil";
 import { IImage, IImageUpload } from "../models/image";
+import { IStats } from "../models/stats";
 import { RootStore } from "./rootStore";
 
 export default class AdminStore {
@@ -19,6 +20,7 @@ export default class AdminStore {
   @observable projectImages: IImage[] = [];
   @observable image: IImage | null = null;
   @observable loading : boolean = false;
+  @observable stats : IStats | null = null;
   @action UploadImages = async (images: IImageUpload) => {
     try {
       await agent.Admin.imageUpload(images);
@@ -89,4 +91,11 @@ export default class AdminStore {
       console.log(error);
     }
   };
+  @action getStats = async () => {
+    const stats = await agent.Admin.getStat();
+    runInAction(() => {
+      this.stats = stats;
+      console.log(this.stats);
+    })
+  }
 }

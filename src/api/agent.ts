@@ -7,6 +7,7 @@ import { IImage, IImageUpload } from "../models/image";
 import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
 import IBooking from "../models/booking";
 import ITransfer from "../models/transfers";
+import { IStats } from "../models/stats";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "http://localhost:5000/api";
@@ -41,7 +42,7 @@ axios.interceptors.response.use(undefined, (error) => {
     toast.error("Server Error Check the terminal for more info");
   }
   if (status === 401) {
-    toast.error("You are not logged in please log in to perform this action");
+    toast.error(data.errors.error);
   }
   if (status === 409) {
     console.log(data);
@@ -92,6 +93,7 @@ const Admin = {
   getImage: (id: string): Promise<IImage> =>
     requests.get(`/Adminstrator/Images/${id}`),
   deleteImage: (id: string) => requests.del(`/Adminstrator/Images/${id}`),
+  getStat : () : Promise<IStats> => requests.get("/Adminstrator/stats")
  
 };
 
@@ -112,4 +114,6 @@ const Units = {
   getAllTransfers : () : Promise<ITransfer[]> => requests.get("/flat/AllTransfers")
 };
 
-export default { Units, User, Admin };
+ const agent =  { Units, User, Admin };
+
+ export default agent;

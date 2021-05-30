@@ -12,15 +12,16 @@ import MyLoader from "../Common/MyLoader";
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
   const { units, listUnits, bookings, transfers, setCurrentUnit, listAllBookings, listAllTransfers, loading } = rootStore.unitStore;
-
+  const { token } = rootStore.commonStore;
   useEffect(() => {
-    listUnits();
-    listAllBookings();
-    listAllTransfers();
-  }, [listUnits, listAllBookings, listAllTransfers]);
+    if (token) {
+      listUnits();
+      listAllBookings();
+      listAllTransfers();
+    }
+  }, [listUnits, listAllBookings, listAllTransfers,token]);
 
   const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
-
   return (
     <div className="unittop">
       <Container >
@@ -43,6 +44,7 @@ const Unit = () => {
           <TransferList transfers={transfers} />
           </div>
           }
+
         </Fragment>
       </Container></div>
   );

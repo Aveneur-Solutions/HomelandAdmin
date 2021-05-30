@@ -63,7 +63,7 @@ export default class UnitStore {
      })
 
     }catch(error)
-    {
+    { 
       console.log(error)
     }
 }

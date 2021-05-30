@@ -2,6 +2,7 @@ import { history } from "../..";
 import "./gallery.css";
 
 const GalleryDash = () => {
+
   return (
     <div className="gallery-dash">
       <div className="gallery-dash-button-container">

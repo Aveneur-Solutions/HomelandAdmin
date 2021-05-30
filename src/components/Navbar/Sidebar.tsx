@@ -8,28 +8,31 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   const rootStore = useContext(RootStoreContext);
   const { logout } = rootStore.userStore;
-
+  const { loggedIn } = rootStore.commonStore;
   return (
     <div className="bm-main">
       <Menu>
         <Link className="bm-item" to="/dashboard">
-            Admin Dashboard
+          Admin Dashboard
          </Link>
-          <Link  className="bm-item" to="/units">
-            Unit
-         </Link>  
-        <Link  className="bm-item" to="/galleryDash">
-           Gallery
+        <Link className="bm-item" to="/units">
+          Unit
          </Link>
-         <Link  className="bm-item" to="/customerManagement">
-           Customer Management
+        <Link className="bm-item" to="/galleryDash">
+          Gallery
          </Link>
-         <Link  className="bm-item" to="/gallery">
-           Settings
+        <Link className="bm-item" to="/customerManagement">
+          Customer Management
          </Link>
-         <Link onClick={logout} className="bm-item" to="/">
-         LOGOUT
+        <Link className="bm-item" to="/gallery">
+          Settings
          </Link>
+        {loggedIn ? <Link onClick={logout} className="bm-item" to="/">
+          LOGOUT
+         </Link> : <Link className="bm-item" to="/">
+          LOGIN
+         </Link>}
+
       </Menu>
     </div>
   );

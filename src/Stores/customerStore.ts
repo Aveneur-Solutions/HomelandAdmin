@@ -1,7 +1,6 @@
 import { action, makeObservable, observable, runInAction } from "mobx";
-import { toast } from "react-toastify";
 import agent from "../api/agent";
-import IUser, { ICustomer } from "../models/user";
+import  { ICustomer } from "../models/user";
 import { RootStore } from "./rootStore";
 
 export default class CustomerStore{
