@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Modal, Button } from "semantic-ui-react";
-import { history } from "../..";
 
 interface IProps {
   trigger: React.ReactNode;

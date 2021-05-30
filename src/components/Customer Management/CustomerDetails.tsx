@@ -1,6 +1,4 @@
-import React from "react";
 import { Link } from "react-router-dom";
-
 const tableheader = {
   backgroundColor: "#1e212d",
   color: "goldenrod",

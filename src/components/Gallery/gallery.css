@@ -94,7 +94,7 @@ input[type="submit"] {
 }
 
 .grid-image:hover {
-  transform: scale(2);
+  transform: scale(1.1);
   transition: transform 0.5s;
 }
 
@@ -109,4 +109,5 @@ input[type="submit"] {
 .image-container {
   height: 70%;
   width: 70%;
+  margin-bottom: 100px;
 }

@@ -1,34 +1,38 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { Statistic } from "semantic-ui-react";
-
-const Statistics = () => {
+import { Segment, Statistic } from "semantic-ui-react";
+import { IStats } from "../../models/stats";
+interface IProps{
+  stats : IStats;
+}
+const Statistics : React.FC<IProps> = ({stats}) => {
   return (
-    <div style={{position:"absolute",margin:"10% 10% 25% 25%",display:"flex",justifyContent:"center"}}>
+    <Segment color="black"  style={{position:"absolute",margin:"6% 10% 25% 25%",display:"flex",justifyContent:"center"}}>
       <Statistic.Group>
         <Statistic color="orange">
-          <Statistic.Value>8'</Statistic.Value>
+          <Statistic.Value>{stats.totalUnits}</Statistic.Value>
           <Statistic.Label>Total Units</Statistic.Label>
         </Statistic>
         <Statistic color="yellow">
-          <Statistic.Value>28</Statistic.Value>
+          <Statistic.Value>{stats.totalAllottedUnits}</Statistic.Value>
           <Statistic.Label>Total Units Sold</Statistic.Label>
         </Statistic>
         <Statistic color="olive">
-          <Statistic.Value>7'</Statistic.Value>
+          <Statistic.Value>{stats.totalBookedUnits}</Statistic.Value>
           <Statistic.Label>Total Units Booked</Statistic.Label>
         </Statistic>
         <Statistic color="green">
-          <Statistic.Value>14</Statistic.Value>
+          <Statistic.Value>{stats.totalTransfers}</Statistic.Value>
           <Statistic.Label>Total Units Transferred</Statistic.Label>
         </Statistic>
         <Statistic color="teal">
-          <Statistic.Value>82</Statistic.Value>
-          <Statistic.Label>Total Number of Customers</Statistic.Label>
+          <Statistic.Value>{stats.totalUsers}</Statistic.Value>
+          <Statistic.Label>Total Number of Users</Statistic.Label>
         </Statistic>
         
       </Statistic.Group>
-    </div>
+    </Segment>
   );
 };
 
-export default Statistics;
+export default observer(Statistics);

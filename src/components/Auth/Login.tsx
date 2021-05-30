@@ -1,19 +1,24 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { IUserLogin } from "../../models/user";
 import { RootStoreContext } from "../../Stores/rootStore";
 import OtpAuth from "./OtpAuth";
 import "./auth.css";
-import { Icon } from "semantic-ui-react";
+import { history } from "../..";
 
 const Login = () => {
   const rootStore = useContext(RootStoreContext);
   const { login, loginWithOtp } = rootStore.userStore;
-
+  const {token} = rootStore.commonStore;
   const [phoneNo, setPhoneNo] = useState("");
   const [otp, setOtp] = useState(false);
   const [passwordFieldVisibility, setPasswordFieldVisibility] = useState(true);
+  useEffect(() => {
+    if (token) {
+      history.push("/dashboard")
+    }   
+  }, [token]);
   const {
     register,
     handleSubmit,

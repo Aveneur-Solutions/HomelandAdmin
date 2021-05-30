@@ -23,7 +23,6 @@ const App = () => {
   const rootStore = useContext(RootStoreContext);
   const { getUser, user } = rootStore.userStore;
   const { token } = rootStore.commonStore;
-
   useEffect(() => {
     if (token && !user) {
       getUser();

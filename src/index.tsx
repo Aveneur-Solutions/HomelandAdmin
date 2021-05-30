@@ -8,7 +8,6 @@ import { Router } from 'react-router-dom';
 import {createHashHistory} from 'history';
 
 export const history = createHashHistory();
-
 ReactDOM.render(
   <Router history={history}>
    <App />

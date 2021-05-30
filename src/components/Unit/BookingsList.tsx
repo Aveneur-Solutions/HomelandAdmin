@@ -1,7 +1,6 @@
 import React from "react";
 import { Header, Table } from "semantic-ui-react";
 import IBooking from "../../models/booking";
-import ITransfer from "../../models/transfers";
 interface IProps {
   bookings: IBooking[] | null;
 }

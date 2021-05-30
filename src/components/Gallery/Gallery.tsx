@@ -1,16 +1,15 @@
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { observer } from "mobx-react-lite";
 import "./gallery.css";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { useForm } from "react-hook-form";
 import { IImageUpload } from "../../models/image";
-import { cursorTo } from "node:readline";
 import { Progress } from "semantic-ui-react";
 import { history } from "../..";
 
 const Gallery = () => {
   const rootStore = useContext(RootStoreContext);
-  const { Images, UploadImages } = rootStore.adminStore;
+  const {  UploadImages } = rootStore.adminStore;
   const [percent, setPercent] = useState(0);
   //   const formState: IImageUpload = {
   //     file: null,

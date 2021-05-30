@@ -4,6 +4,7 @@ import { RouteComponentProps } from "react-router";
 import { Button, Image } from "semantic-ui-react";
 import { RootStoreContext } from "../../Stores/rootStore";
 import DeleteImageModal from "./DeleteImageModal";
+import { history } from "../..";
 
 interface CustomParams {
   id: string;
@@ -24,20 +25,22 @@ const ImageDetails: React.FC<RouteComponentProps<CustomParams>> = ({
       <div className="image-container">
         {image && (
           <>
-            <Image
-              src={
-                "https://www.homeland.aveneur.com/Images" + image.imageLocation
-              }
-            />
+            <Button onClick={() => history.push("/imageGallery")} floated="left" color="yellow" style={{ marginTop: 20, marginBottom: 10 }}>
+              Go back
+                </Button>
             <DeleteImageModal
               trigger={
-                <Button color="red" style={{ marginTop: 20 }}>
+                <Button floated="right" color="red" style={{ marginTop: 20, marginBottom: 10 }}>
                   Delete
                 </Button>
               }
               action={() => deleteImage(image)}
             />
-            <div style={{marginTop:15}}></div>
+            <Image
+              src={
+                "https://www.homeland.aveneur.com/Images" + image.imageLocation
+              }
+            />    
           </>
         )}
       </div>

@@ -1,6 +1,4 @@
-import { action, makeObservable, observable, reaction, runInAction } from "mobx";
-import { toast } from "react-toastify";
-import agent from "../api/agent";
+import { action, makeObservable, observable, reaction } from "mobx";
 import { RootStore } from "./rootStore";
 
 export default class CommonStore {
@@ -21,8 +19,8 @@ export default class CommonStore {
     );
   }
 
-  @observable token = localStorage.getItem("jwt");
-  
+  @observable token : string | null = window.localStorage.getItem("jwt");
+  @observable loggedIn : boolean = false;
   @action setToken = (token: string) => {
     localStorage.setItem("jwt", token);
     this.token = token;
@@ -32,4 +30,5 @@ export default class CommonStore {
     localStorage.removeItem("jwt");
     this.token = null;
   };
+ 
 }

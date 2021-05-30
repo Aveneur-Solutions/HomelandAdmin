@@ -4,7 +4,7 @@ import { IUnit } from "../../models/unit";
 import "../shared/shared.css"
 import { RootStoreContext } from "../../Stores/rootStore";
 import { useContext, useState } from "react"
-import { Container, Input } from "semantic-ui-react";
+import { Button, Container } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 
@@ -17,7 +17,6 @@ const UnitForm = () => {
   const rootStore = useContext(RootStoreContext);
   const { currentUnit: unit, addUnit, editUnit } = rootStore.unitStore;
   const [submitting,setSubmitting] = useState(false);
-
   const onSubmitHandler = (data: IUnit) => {
     setSubmitting(true);
     console.log(data)
@@ -167,7 +166,7 @@ const UnitForm = () => {
           <input className="uiInput" id="images" type="file" {...register("images")} />
           <br />
           {errors.downPaymentDays && <p>{errors.downPaymentDays.message}</p>}
-          <Input loading={submitting}  style={{ marginTop: 10,cursor:"pointer" }} type="submit" value="Submit" />
+          <Button loading={submitting} color="black" style={{ marginTop: 10,cursor:"pointer" }}>Submit</Button>
 
         </form>
       </Container>
