@@ -7,25 +7,27 @@ import "./unit.css";
 import { Container } from "semantic-ui-react";
 import BookingsList from "./BookingsList";
 import TransferList from "./TransferList";
+import MyLoader from "../Common/MyLoader";
 
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
-  const { units, listUnits,bookings,transfers, setCurrentUnit ,listAllBookings,listAllTransfers} = rootStore.unitStore;
+  const { units, listUnits, bookings, transfers, setCurrentUnit, listAllBookings, listAllTransfers, loading } = rootStore.unitStore;
 
   useEffect(() => {
     listUnits();
     listAllBookings();
     listAllTransfers();
-  }, [listUnits,listAllBookings,listAllTransfers]);
+  }, [listUnits, listAllBookings, listAllTransfers]);
 
   const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
+
   return (
     <div className="unittop">
       <Container >
         <button
           type="button"
           className="homeLandButton"
-        style={buttonStyle}
+          style={buttonStyle}
           onClick={() => {
             setCurrentUnit(null);
             history.push("/unitForm")
@@ -35,16 +37,13 @@ const Unit = () => {
       </button>
 
         <Fragment>
-          <UnitList
-            units={units}
-          />
+          {loading ? <MyLoader /> : <UnitList units={units} />}
           <div className="list">
-          <BookingsList bookings={bookings}/>
-          <TransferList transfers={transfers}/>
+           {loading ? <MyLoader /> : <BookingsList bookings={bookings} />}
+          {loading ? <MyLoader /> : <TransferList transfers={transfers} />}
           </div>
+
         </Fragment>
-
-
       </Container></div>
   );
 };

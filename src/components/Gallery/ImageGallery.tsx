@@ -5,7 +5,7 @@ import { useContext, useEffect } from "react";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { observer } from "mobx-react-lite";
 import GalleryImage from "./GalleryImage";
-
+import MyLoader from "../Common/MyLoader";
 const ImageGallery = () => {
   const rootStore = useContext(RootStoreContext);
   const {
@@ -13,6 +13,7 @@ const ImageGallery = () => {
     galleryImages,
     homeImages,
     projectImages,
+    loading
   } = rootStore.adminStore;
 
   useEffect(() => {
@@ -28,10 +29,11 @@ const ImageGallery = () => {
         >
           Go back
         </button>
-        <div className="image-gallery-container">
+        {loading ? <MyLoader /> : <div className="image-gallery-container">
           <div className="image-gallery-columns">
             <h2>Gallery</h2>
             <div className="gallery-images">
+
               <Grid columns={3}>
                   {galleryImages.map((image) => (
                     <Grid.Column key={image.id}>
@@ -70,7 +72,8 @@ const ImageGallery = () => {
               </Grid>
             </div>
           </div>
-        </div>
+        </div>}
+
       </div>
     </div>
   );

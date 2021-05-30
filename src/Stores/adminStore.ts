@@ -18,7 +18,7 @@ export default class AdminStore {
   @observable homeImages: IImage[] = [];
   @observable projectImages: IImage[] = [];
   @observable image: IImage | null = null;
-
+  @observable loading : boolean = false;
   @action UploadImages = async (images: IImageUpload) => {
     try {
       await agent.Admin.imageUpload(images);
@@ -39,6 +39,7 @@ export default class AdminStore {
 
   @action listAllImages = async () => {
     try {
+      this.loading = true;
       const images = await agent.Admin.getAllImages();
       runInAction(() => {
         this.galleryImages = images.filter(
@@ -48,6 +49,7 @@ export default class AdminStore {
         this.projectImages = images.filter(
           (image) => image.section === "projects"
         );
+        this.loading = false;
       });
     } catch (error) {
       console.log(error);

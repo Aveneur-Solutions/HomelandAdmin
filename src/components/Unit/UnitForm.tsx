@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { IUnit } from "../../models/unit";
 import "../shared/shared.css"
 import { RootStoreContext } from "../../Stores/rootStore";
-import { useContext } from "react"
-import { Container } from "semantic-ui-react";
+import { useContext, useState } from "react"
+import { Container, Input } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 
@@ -16,12 +16,13 @@ const UnitForm = () => {
   } = useForm<IUnit>();
   const rootStore = useContext(RootStoreContext);
   const { currentUnit: unit, addUnit, editUnit } = rootStore.unitStore;
-  
+  const [submitting,setSubmitting] = useState(false);
 
   const onSubmitHandler = (data: IUnit) => {
+    setSubmitting(true);
     console.log(data)
-    if (!unit) addUnit(data);
-    else editUnit(data);
+    if (!unit) addUnit(data).then(() => setSubmitting(false));
+    else editUnit(data).then(() => setSubmitting(false));
   };
 
   return (
@@ -165,8 +166,9 @@ const UnitForm = () => {
           <br />
           <input className="uiInput" id="images" type="file" {...register("images")} />
           <br />
-          {errors.downPaymentDays && <p className="errorMsg">{errors.downPaymentDays.message}</p>}
-          <input style={{ marginTop: 10,cursor:"pointer", marginBottom: 15}} type="submit" value="Submit" />
+          {errors.downPaymentDays && <p>{errors.downPaymentDays.message}</p>}
+          <Input loading={submitting}  style={{ marginTop: 10,cursor:"pointer" }} type="submit" value="Submit" />
+
         </form>
       </Container>
 

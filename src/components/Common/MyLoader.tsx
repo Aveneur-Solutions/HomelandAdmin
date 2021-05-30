@@ -3,9 +3,9 @@ import { Dimmer, Loader, Segment } from 'semantic-ui-react'
 
 const MyLoader = () => {
     return (
-        <Segment>
-            <Dimmer active>
-                <Loader size='massive'>Loading</Loader>
+        <Segment size="massive">
+            <Dimmer  active inverted >
+                <Loader size="large" />
             </Dimmer>
         </Segment>
     )
