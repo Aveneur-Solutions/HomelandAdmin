@@ -62,7 +62,6 @@ export default class UserStore {
     this.rootStore.commonStore.removeToken();
     this.user = null;
     this.rootStore.commonStore.loggedIn = false;
-    history.push("./")
-
+    history.push("/")
   };
 }

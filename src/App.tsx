@@ -17,46 +17,52 @@ import GalleryDash from "./components/Gallery/GalleryDash";
 import ImageGallery from "./components/Gallery/ImageGallery";
 import ImageDetails from "./components/Gallery/ImageDetails";
 import CustomerDetails from "./components/Customer Management/CustomerDetails";
-
+import { history } from ".";
+import PrivateRoute from "./private/PrivateRoute";
+import Reloading from "./private/Reloading";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
-  const { getUser, user } = rootStore.userStore;
-  const { token } = rootStore.commonStore;
+  const { getUser } = rootStore.userStore;
+  const { token, loggedIn } = rootStore.commonStore;
+
   useEffect(() => {
-    if (token && !user) {
-      getUser();
+    if(!token && !loggedIn) {
+      history.push("/")
+    } else {
+      getUser()
     }
-  }, [token, getUser, user]);
+  }, [token, getUser, loggedIn]);
+
   return (
     <>
-       <Fragment>
-      <ToastContainer position="top-right" />
-      <Route exact path="/" component={Login} />
-      <Route
-        path={"/(.+)"}
-        render={() => (
-          <Fragment>
-           <Sidebar />
-          
+      <Fragment>
+        <ToastContainer position="top-right" />
+        <Route exact path="/" component={Login} />
+        <Route
+          path={"/(.+)"}
+          render={() => (
+            <Fragment>
+              <Sidebar />
+
               <Switch>
-              <Route exact path="/dashboard" component={Dashboard} />
-                <Route exact path="/units" component={Unit} />
-                <Route exact path="/galleryDash" component={GalleryDash} />
-                <Route exact path="/imageGallery" component={ImageGallery} />
-                <Route exact path="/gallery" component={Gallery} />
-                <Route path="/image/:id" component={ImageDetails} />
-                <Route exact path="/unitForm" component={UnitForm} />
-                <Route path="/unit/:id" component={UnitDetails} />
-                <Route path="/customerManagement" component={CustomerDash} />
-                <Route path="/customerDetails" component={CustomerDetails}/>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+                <PrivateRoute exact path="/units" component={Unit} />
+                <PrivateRoute exact path="/galleryDash" component={GalleryDash} />
+                <PrivateRoute exact path="/imageGallery" component={ImageGallery} />
+                <PrivateRoute exact path="/gallery" component={Gallery} />
+                <PrivateRoute path="/image/:id" component={ImageDetails} />
+                <PrivateRoute exact path="/unitForm" component={UnitForm} />
+                <PrivateRoute path="/unit/:id" component={UnitDetails} />
+                <PrivateRoute path="/customerManagement" component={CustomerDash} />
+                <PrivateRoute path="/customerDetails" component={CustomerDetails} />
+                <Route path="/reloading" component={Reloading} />
                 {/* <Route component={NotFound} /> */}
               </Switch>
-         
-          </Fragment>
-        )}
-      />
-    </Fragment>
+            </Fragment>
+          )}
+        />
+      </Fragment>
     </>
   );
 };
