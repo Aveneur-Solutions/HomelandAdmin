@@ -12,14 +12,14 @@ import MyLoader from "../Common/MyLoader";
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
   const { units, listUnits, bookings, transfers, setCurrentUnit, listAllBookings, listAllTransfers, loading } = rootStore.unitStore;
-  const { token } = rootStore.commonStore;
+  const { token, loggedIn } = rootStore.commonStore;
   useEffect(() => {
-    if (token) {
+    if (token && loggedIn) {
       listUnits();
       listAllBookings();
       listAllTransfers();
     }
-  }, [listUnits, listAllBookings, listAllTransfers,token]);
+  }, [listUnits, listAllBookings, listAllTransfers,token, loggedIn]);
 
   const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
   return (

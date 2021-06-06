@@ -21,6 +21,7 @@ export default class CommonStore {
 
   @observable token : string | null = window.localStorage.getItem("jwt");
   @observable loggedIn : boolean = false;
+
   @action setToken = (token: string) => {
     localStorage.setItem("jwt", token);
     this.token = token;

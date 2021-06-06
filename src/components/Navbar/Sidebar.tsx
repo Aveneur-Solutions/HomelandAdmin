@@ -14,25 +14,28 @@ const Sidebar = () => {
       <Menu>
         <Link className="bm-item" to="/dashboard">
           Admin Dashboard
-         </Link>
+        </Link>
         <Link className="bm-item" to="/units">
           Unit
-         </Link>
+        </Link>
         <Link className="bm-item" to="/galleryDash">
           Gallery
-         </Link>
+        </Link>
         <Link className="bm-item" to="/customerManagement">
           Customer Management
-         </Link>
+        </Link>
         <Link className="bm-item" to="/gallery">
           Settings
-         </Link>
-        {loggedIn ? <Link onClick={logout} className="bm-item" to="/">
-          LOGOUT
-         </Link> : <Link className="bm-item" to="/">
-          LOGIN
-         </Link>}
-
+        </Link>
+        {loggedIn ? (
+          <Link onClick={logout} className="bm-item" to="/">
+            LOGOUT
+          </Link>
+        ) : (
+          <Link className="bm-item" to="/">
+            LOGIN
+          </Link>
+        )}
       </Menu>
     </div>
   );

@@ -19,8 +19,8 @@ const TransferList : React.FC<IProps> = ({transfers}) => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {transfers!.map((item) => (
-                        <Table.Row key={item.flatId}>
+                    {transfers!.map((item, index) => (
+                        <Table.Row key={index}>
                             <Table.Cell>
                                 <p>{item.flatId}</p>
                             </Table.Cell>

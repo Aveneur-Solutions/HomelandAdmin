@@ -9,16 +9,21 @@ import { history } from "../..";
 
 const Login = () => {
   const rootStore = useContext(RootStoreContext);
-  const { login, loginWithOtp } = rootStore.userStore;
-  const {token} = rootStore.commonStore;
+  const { login, loginWithOtp, user } = rootStore.userStore;
+  const { token } = rootStore.commonStore;
   const [phoneNo, setPhoneNo] = useState("");
   const [otp, setOtp] = useState(false);
   const [passwordFieldVisibility, setPasswordFieldVisibility] = useState(true);
+
   useEffect(() => {
-    if (token) {
-      history.push("/dashboard")
-    }   
-  }, [token]);
+    if (token && user) {
+      history.push("/dashboard");
+      // if (location.state) {
+      //   history.push(location.state.from);
+      // } else history.push("/dashboard");
+    }
+  }, [token, user]);
+
   const {
     register,
     handleSubmit,

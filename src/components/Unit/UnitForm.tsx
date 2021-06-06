@@ -14,9 +14,12 @@ const UnitForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IUnit>();
+
   const rootStore = useContext(RootStoreContext);
   const { currentUnit: unit, addUnit, editUnit } = rootStore.unitStore;
+
   const [submitting,setSubmitting] = useState(false);
+  
   const onSubmitHandler = (data: IUnit) => {
     setSubmitting(true);
     console.log(data)

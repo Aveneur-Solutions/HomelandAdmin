@@ -95,7 +95,6 @@ export default class AdminStore {
     const stats = await agent.Admin.getStat();
     runInAction(() => {
       this.stats = stats;
-      console.log(this.stats);
     })
   }
 }

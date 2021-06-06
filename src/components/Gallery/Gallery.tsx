@@ -32,6 +32,7 @@ const Gallery = () => {
     reset,
     formState: { errors },
   } = useForm<IImageUpload>();
+  
   return (
     <div className="formbg">
     <div className="gallery-form">
