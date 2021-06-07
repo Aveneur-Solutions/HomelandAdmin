@@ -64,7 +64,7 @@ const CustomerList: React.FC<IProps> = ({ customer }) => {
                   <p>{item.noOfFlatsAlloted}</p>
                 </Table.Cell>
                 <Table.Cell>
-                  <Link to="/customerDetails">
+                  <Link to="/CustomerDashboard">
                     <button
                       className="action-button"
                       style={{ display: "flex", justifyContent: "center", alignItems:"center" }}
