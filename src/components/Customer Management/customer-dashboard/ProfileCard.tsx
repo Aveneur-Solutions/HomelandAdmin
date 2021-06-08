@@ -6,7 +6,7 @@ const ProfileCard = () => {
     return (
         <Card className="main-profile-card">
             <Image src={ProfilePic} wrapped ui={false} />
-            <Card.Content>
+            <Card.Content className="profile-content">
                 <Card.Header>Customer Name</Card.Header>
                 <Card.Meta>
                     <span className='date'>Joined in 2015</span>

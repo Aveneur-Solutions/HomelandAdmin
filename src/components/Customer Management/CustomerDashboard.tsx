@@ -14,11 +14,11 @@ const CustomerDashboard = () => {
         <button className="backBtn"> Go back</button>
       </Link>
       <Container className="main-container" style={{ padding: "2%" }}>
-        <Grid>
-          <Grid.Column className="main-card-grid" width={4}>
+        <Grid className="first-grid">
+          <Grid.Column className="main-card-grid" computer={4} mobile={16} tablet={16}>
             <Card />
           </Grid.Column>
-          <Grid.Column width={12}>
+          <Grid.Column computer={12} mobile={16} tablet={16}>
             <Grid.Row
               className="units-booked-grid"
               style={{ marginBottom: "3px" }}
@@ -36,9 +36,10 @@ const CustomerDashboard = () => {
             </Grid.Row>
           </Grid.Column>
         </Grid>
-        <Grid>
+
+        <Grid className="second-grid">
           <Grid.Row>
-            <Grid.Column className="units-booked-grid">
+            <Grid.Column className="units-booked-grid" computer={16} mobile={16} tablet={16}>
               <h4>Allotments</h4>
               <Container className="units-booked" as="div">
                 <Allotments />
