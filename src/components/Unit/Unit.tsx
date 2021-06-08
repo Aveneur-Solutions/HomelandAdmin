@@ -3,7 +3,6 @@ import { Fragment, useContext, useEffect } from "react";
 import { RootStoreContext } from "../../Stores/rootStore";
 import { history } from "../../";
 import UnitList from "./UnitList";
-import "./unit.css";
 import { Container } from "semantic-ui-react";
 import BookingsList from "./BookingsList";
 import TransferList from "./TransferList";
@@ -24,7 +23,7 @@ const Unit = () => {
   const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
   return (
     <div className="unittop">
-      <Container >
+      <Container>
         <button
           type="button"
           className="homeLandButton"
