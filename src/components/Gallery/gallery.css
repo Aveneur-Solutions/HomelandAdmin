@@ -111,3 +111,17 @@ input[type="submit"] {
   width: 70%;
   margin-bottom: 100px;
 }
+
+.gallery-main-container{
+  padding: 10%;
+  position: relative;
+}
+.gallery-main-grid{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.gallery-main-card:hover{
+  transform: scale(1.1);
+  transition: 0.4s ease;
+}
