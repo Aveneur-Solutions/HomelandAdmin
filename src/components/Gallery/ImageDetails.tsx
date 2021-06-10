@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { RouteComponentProps } from "react-router";
 import { Button, Image } from "semantic-ui-react";
 import { RootStoreContext } from "../../Stores/rootStore";
-import DeleteImageModal from "./DeleteImageModal";
+import DeleteModal from "../../modal/DeleteModal";
 import { history } from "../..";
 
 interface CustomParams {
@@ -28,7 +28,8 @@ const ImageDetails: React.FC<RouteComponentProps<CustomParams>> = ({
             <Button onClick={() => history.push("/imageGallery")} floated="left" color="yellow" style={{ marginTop: 20, marginBottom: 10 }}>
               Go back
                 </Button>
-            <DeleteImageModal
+            <DeleteModal
+              header="Are you sure you want to delete this photo?"
               trigger={
                 <Button floated="right" color="red" style={{ marginTop: 20, marginBottom: 10 }}>
                   Delete
