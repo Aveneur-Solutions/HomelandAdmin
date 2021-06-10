@@ -4,9 +4,10 @@ import { Modal, Button } from "semantic-ui-react";
 interface IProps {
   trigger: React.ReactNode;
   action: Function;
+  header: string;
 }
 
-const DeleteImageModal: React.FC<IProps> = ({ trigger, action }) => {
+const DeleteModal: React.FC<IProps> = ({ trigger, action, header }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,7 +18,7 @@ const DeleteImageModal: React.FC<IProps> = ({ trigger, action }) => {
       open={open}
       trigger={trigger}
     >
-      <Modal.Header>Are you sure you want to delete this photo?</Modal.Header>
+      <Modal.Header>{header}</Modal.Header>
       <Modal.Actions>
         <Button onClick={() => setOpen(false)}>No</Button>
         <Button
@@ -34,4 +35,4 @@ const DeleteImageModal: React.FC<IProps> = ({ trigger, action }) => {
   );
 };
 
-export default DeleteImageModal;
+export default DeleteModal;

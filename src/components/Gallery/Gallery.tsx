@@ -49,7 +49,7 @@ const Gallery = () => {
             <label htmlFor="section" style={{ marginRight: "20px" }}>
               Select Section{" "}
             </label>
-            <select style={{ marginRight: "20px" }} {...register("section")}>
+            <select style={{ marginBottom: "10px" }} {...register("section")}>
               <option value="gallery">Gallery</option>
               <option value="home">Home</option>
               <option value="projects">Projects</option>
@@ -67,7 +67,7 @@ const Gallery = () => {
             <input
               type="submit"
               value="Upload"
-              style={{ marginTop: "20px", cursor: "pointer" }}
+              style={{ marginTop: "40px", cursor: "pointer" }}
             />
           </div>
         </form>

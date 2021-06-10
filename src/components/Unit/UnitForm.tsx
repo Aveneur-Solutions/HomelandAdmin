@@ -1,15 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { useForm } from "react-hook-form";
 import { IUnit } from "../../models/unit";
-import "../shared/shared.css"
+import "../shared/shared.css";
 import { RootStoreContext } from "../../Stores/rootStore";
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react";
 import { Button, Container } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import "./unit.css";
 
-
-const UnitForm = () => {
+const UnitForm: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const {
     register,
     handleSubmit,
@@ -17,16 +16,27 @@ const UnitForm = () => {
   } = useForm<IUnit>();
 
   const rootStore = useContext(RootStoreContext);
-  const { currentUnit: unit, addUnit, editUnit } = rootStore.unitStore;
+  const {
+    currentUnit: unit,
+    addUnit,
+    editUnit,
+    unitDetails,
+  } = rootStore.unitStore;
 
-  const [submitting,setSubmitting] = useState(false);
-  
+  const [submitting, setSubmitting] = useState(false);
+
   const onSubmitHandler = (data: IUnit) => {
     setSubmitting(true);
-    console.log(data)
+    console.log(data);
     if (!unit) addUnit(data).then(() => setSubmitting(false));
     else editUnit(data).then(() => setSubmitting(false));
   };
+
+  useEffect(() => {
+    if (match.params.id) {
+      unitDetails(match.params.id);
+    }
+  }, [unitDetails, match.params.id]);
 
   return (
     <>

@@ -10,17 +10,11 @@ interface CustomParams {
 const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => {
   const rootStore = useContext(RootStoreContext);
   const { currentUnit, unitDetails } = rootStore.unitStore;
-  const { token } = rootStore.commonStore;
+
   useEffect(() => {
-    if(token)
-    {
-      if (currentUnit === null) {
-        unitDetails(match.params.id);
-      
-      }
-    }
-  }, [currentUnit, match.params.id, unitDetails,token])
-  console.log(currentUnit?.images)
+    unitDetails(match.params.id)
+  }, [match.params.id, unitDetails])
+
   return (
     <div className="unittop">
 

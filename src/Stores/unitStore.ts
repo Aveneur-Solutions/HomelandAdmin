@@ -73,7 +73,7 @@ export default class UnitStore {
       const unit = await agent.Units.details(id);
      runInAction(() => {
        this.currentUnit = unit;
-       history.push(`/unit/${id}`)
+       
      });
    }catch (error)
    {

@@ -53,6 +53,7 @@ const App = () => {
                 <PrivateRoute exact path="/gallery" component={Gallery} />
                 <PrivateRoute path="/image/:id" component={ImageDetails} />
                 <PrivateRoute exact path="/unitForm" component={UnitForm} />
+                <PrivateRoute exact path="/unitForm/:id" component={UnitForm} />
                 <PrivateRoute path="/unit/:id" component={UnitDetails} />
                 <PrivateRoute path="/customerManagement" component={CustomerDash} />
                 <PrivateRoute path="/customerDashboard" component={CustomerDashboard} />
