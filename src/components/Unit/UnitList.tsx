@@ -1,12 +1,13 @@
 import { observer } from "mobx-react-lite";
 import React, { Fragment, useContext, useEffect, useState } from "react";
-import { Dropdown, DropdownProps, Icon, Input, Table } from "semantic-ui-react";
+import { Container, Dropdown, DropdownProps, Icon, Input, Table } from "semantic-ui-react";
 import { IUnit } from "../../models/unit";
 import { RootStoreContext } from "../../Stores/rootStore";
 import DeleteUnitConfirmDiv from "./DeleteUnitConfirmDiv";
 import { history } from "../../";
 import { useMediaQuery } from "react-responsive";
 import DeleteModal from "../../modal/DeleteModal";
+import './unit.css'
 
 interface IProps {
   units: any[];
@@ -97,100 +98,101 @@ const UnitList: React.FC<IProps> = ({ units }) => {
             />
             <Input icon="search" placeholder="Search..." />
           </div>
-
-          <Table celled textAlign="center" padded>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  UNIT ID
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  SIZE
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  PRICE
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  BOOKING PRICE
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  Level
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  STATUS
-                </Table.HeaderCell>
-                <Table.HeaderCell
-                  style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
-                >
-                  Action
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {unitsTobeDisplayed.map((item) => (
-                <Table.Row key={item.id}>
-                  <Table.Cell>
-                    <p>{item.id}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <p>{item.size}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <p>{item.price}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <p>{item.bookingPrice}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <p>{item.level}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <p>{item.isBooked ? "Booked" : "Available"}</p>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {(filter === "All" || filter === "Available") && (
-                      <Fragment>
-                        <button
-                          onClick={() => history.push(`/unitForm/${item.id}`)}
-                          className="action-button"
-                        >
-                          <Icon color="blue" name="edit outline"></Icon>
-                        </button>
-                        <DeleteModal
-                          header={`Are you sure you want to delete unit ${item.id}?`}
-                          trigger={
-                            <button className="action-button">
-                              <Icon color="red" name="delete"></Icon>
-                            </button>
-                          }
-                          action={() => handleClickDelete(item.id)}
-                        />
-                      </Fragment>
-                    )}
-
-                    <button
-                      className="action-button"
-                      onClick={() => history.push(`/unit/${item.id}`)}
-                    >
-                      <Icon color="yellow" name="eye"></Icon>
-                    </button>
-                  </Table.Cell>
+          <Container className="unit-container">
+            <Table celled textAlign="center" padded>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    UNIT ID
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    SIZE
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    PRICE
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    BOOKING PRICE
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    Level
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    STATUS
+                  </Table.HeaderCell>
+                  <Table.HeaderCell
+                    style={{ backgroundColor: "#1e212d", color: "goldenrod" }}
+                  >
+                    Action
+                  </Table.HeaderCell>
                 </Table.Row>
-              ))}
-            </Table.Body>
-          </Table>
+              </Table.Header>
+              <Table.Body>
+                {unitsTobeDisplayed.map((item) => (
+                  <Table.Row key={item.id}>
+                    <Table.Cell>
+                      <p>{item.id}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>{item.size}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>{item.price}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>{item.bookingPrice}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>{item.level}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <p>{item.isBooked ? "Booked" : "Available"}</p>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {(filter === "All" || filter === "Available") && (
+                        <Fragment>
+                          <button
+                            onClick={() => history.push(`/unitForm/${item.id}`)}
+                            className="action-button"
+                          >
+                            <Icon color="blue" name="edit outline"></Icon>
+                          </button>
+                          <DeleteModal
+                            header={`Are you sure you want to delete unit ${item.id}?`}
+                            trigger={
+                              <button className="action-button">
+                                <Icon color="red" name="delete"></Icon>
+                              </button>
+                            }
+                            action={() => handleClickDelete(item.id)}
+                          />
+                        </Fragment>
+                      )}
+
+                      <button
+                        className="action-button"
+                        onClick={() => history.push(`/unit/${item.id}`)}
+                      >
+                        <Icon color="yellow" name="eye"></Icon>
+                      </button>
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table.Body>
+            </Table>
+          </Container>
         </div>
       ) : (
         <div className="tbl">

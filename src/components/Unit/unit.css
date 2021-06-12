@@ -30,6 +30,7 @@
 .filter-unit-div{
     display: flex;
     justify-content:space-between;
+    margin-bottom: 2%;
 }
 
 .list{
@@ -58,4 +59,41 @@ label{
     font-size: medium;
     font-weight: 600;
     margin-bottom: 3%;
+}
+
+
+/* **************** UnitList *********************** */
+.unit-container{
+    height: 76.9vh;
+    overflow: auto;
+}
+.unit-container::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(204, 154, 35, 0.7875525210084033);
+}
+.unit-container::-webkit-scrollbar-thumb{
+    background-color: goldenrod;
+}
+
+/* **************** BookingList *********************** */
+.unit-booking-container{
+    height: 40vh;
+    overflow: auto;
+}
+.unit-booking-container::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(204, 154, 35, 0.7875525210084033);
+}
+.unit-booking-container::-webkit-scrollbar-thumb{
+    background-color: goldenrod;
+}
+
+/* **************** TransferList *********************** */
+.unit-transfer-container{
+    height: 31vh;
+    overflow: auto;
+}
+.unit-transfer-container::-webkit-scrollbar-track{
+    box-shadow: inset 0 0 6px rgba(204, 154, 35, 0.7875525210084033);
+}
+.unit-transfer-container::-webkit-scrollbar-thumb{
+    background-color: goldenrod;
 }
