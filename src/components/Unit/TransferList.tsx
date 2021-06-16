@@ -1,3 +1,4 @@
+import { format } from 'date-fns'
 import React from 'react'
 import { Container, Header, Table } from 'semantic-ui-react'
 import ITransfer from '../../models/transfers'
@@ -50,7 +51,7 @@ const TransferList : React.FC<IProps> = ({transfers}) => {
                     <p>{item.transferredTo}</p>
                   </Table.Cell>
                   <Table.Cell>
-                    <p>{item.transferDate}</p>
+                    <p>{format(new Date(item.transferDate), "dd MMM yyyy")}</p>
                   </Table.Cell>
                 </Table.Row>
               ))}
