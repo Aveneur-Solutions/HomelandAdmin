@@ -5,6 +5,7 @@ import agent from "../api/agent";
 import { updateImageArray } from "../helper/updateImageArrayUtil";
 import { IImage, IImageUpload } from "../models/image";
 import { IStats } from "../models/stats";
+import { ICustomerDetails } from "../models/user";
 import { RootStore } from "./rootStore";
 
 export default class AdminStore {
@@ -97,4 +98,5 @@ export default class AdminStore {
       this.stats = stats;
     })
   }
+  
 }

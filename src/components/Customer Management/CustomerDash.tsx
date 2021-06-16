@@ -7,7 +7,7 @@ import "./customer.css"
 import MyLoader from '../Common/MyLoader'
 const CustomerDash = () => {
     const rootStore = useContext(RootStoreContext)
-    const { customerList, getCustomerList ,loading} = rootStore.customerStore;
+    const { customerList, getCustomerList ,loading,getCustomerDetails,currentCustomer} = rootStore.customerStore;
 
     useEffect(() => {
         if (!customerList) {
@@ -18,7 +18,7 @@ const CustomerDash = () => {
         <div className="customertop"style={{marginTop:"5%"}}>
             <Container>
             <Header size="large" style={{marginTop:"5vh", textAlign:"center"}}>Customer List</Header>
-                {loading ? <MyLoader /> : <CustomerList customer={customerList!} />}
+                {loading ? <MyLoader /> : <CustomerList getCustomerDetails={getCustomerDetails} customer={customerList!} />}
                 
             </Container>
 

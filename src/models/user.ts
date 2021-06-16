@@ -1,3 +1,7 @@
+import { IAllotment } from "./allotment";
+import IBooking from "./booking";
+import ITransfer from "./transfers";
+
 export interface IUserLogin {
   phoneNumber: string;
   password: string;
@@ -28,4 +32,13 @@ export interface IUserRegister {
   lastName: string;
   phoneNumber: string;
   password: string;
+}
+export interface ICustomerDetails{
+  fullName: string,
+  phoneNumber : string,
+  address : string,
+  nid : string,
+  bookings : IBooking[],
+  allotments : IAllotment[],
+  transfers : ITransfer[]
 }

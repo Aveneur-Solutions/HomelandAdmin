@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import React from "react";
 import { Container, Header, Table } from "semantic-ui-react";
 import IBooking from "../../models/booking";
@@ -42,7 +43,7 @@ const BookingsList: React.FC<IProps> = ({ bookings }) => {
                   <p>{item.customerName}</p>
                 </Table.Cell>
                 <Table.Cell>
-                  <p>{item.dateBooked}</p>
+                  <p>{format(new Date(item.dateBooked), "dd MMM yyyy")}</p>
                 </Table.Cell>
               </Table.Row>
             ))}

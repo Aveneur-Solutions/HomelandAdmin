@@ -19,7 +19,8 @@ import ImageDetails from "./components/Gallery/ImageDetails";
 import { history } from ".";
 import PrivateRoute from "./private/PrivateRoute";
 import Reloading from "./private/Reloading";
-import CustomerDashboard from "./components/Customer Management/CustomerDashboard";
+import CustomerDashboard from "./components/Customer Management/CustomerDetails";
+import CustomerDetails from "./components/Customer Management/CustomerDetails";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -56,7 +57,7 @@ const App = () => {
                 <PrivateRoute exact path="/unitForm/:id" component={UnitForm} />
                 <PrivateRoute path="/unit/:id" component={UnitDetails} />
                 <PrivateRoute path="/customerManagement" component={CustomerDash} />
-                <PrivateRoute path="/customerDashboard" component={CustomerDashboard} />
+                <PrivateRoute path="/customerDetails/:phoneNumber" component={CustomerDetails} />
                 <Route path="/reloading" component={Reloading} />
                 {/* <Route component={NotFound} /> */}
               </Switch>

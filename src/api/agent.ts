@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { IUnit} from "../models/unit";
-import IUser, { ICustomer, IUserLogin, IUserLoginWithOtp } from "../models/user";
+import IUser, { ICustomer, ICustomerDetails, IUserLogin, IUserLoginWithOtp } from "../models/user";
 import { history } from "../";
 import { IImage, IImageUpload } from "../models/image";
 import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
@@ -94,7 +94,8 @@ const Admin = {
   getImage: (id: string): Promise<IImage> =>
     requests.get(`/Adminstrator/Images/${id}`),
   deleteImage: (id: string) => requests.del(`/Adminstrator/Images/${id}`),
-  getStat : () : Promise<IStats> => requests.get("/Adminstrator/stats")
+  getStat : () : Promise<IStats> => requests.get("/Adminstrator/stats"),
+  customerDetails : (body : string) : Promise<ICustomerDetails> => requests.get(`/Adminstrator/customerDetails/${body}`)
  
 };
 

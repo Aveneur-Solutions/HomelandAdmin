@@ -2,13 +2,20 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Icon, Table } from "semantic-ui-react";
-import  { ICustomer } from "../../models/user";
+import { ICustomer, ICustomerDetails } from "../../models/user";
 interface IProps {
   customer: ICustomer[];
+  getCustomerDetails: (number: string) => Promise<void>;
 }
-const CustomerList: React.FC<IProps> = ({ customer }) => {
+const CustomerList: React.FC<IProps> = ({ customer,getCustomerDetails}) => {
+  
+
+  
+  const handleClick = (customer : ICustomer) => {
+     getCustomerDetails(customer.phoneNumber);
+  }
   return (
-    <div style={{position:"absolute", margin:"5vh 8%"}}>
+    <div style={{ position: "absolute", margin: "5vh 8%" }}>
       <Table celled textAlign="center" padded>
         <Table.Header>
           <Table.Row>
@@ -64,14 +71,13 @@ const CustomerList: React.FC<IProps> = ({ customer }) => {
                   <p>{item.noOfFlatsAlloted}</p>
                 </Table.Cell>
                 <Table.Cell>
-                  <Link to="/CustomerDashboard">
-                    <button
-                      className="action-button"
-                      style={{ display: "flex", justifyContent: "center", alignItems:"center" }}
-                    >
-                      <Icon color="black" name="eye"></Icon>
-                    </button>
-                  </Link>
+                  <button
+                    className="action-button"
+                    style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+                    onClick={() => handleClick(item)}
+                  >
+                    <Icon color="black" name="eye"></Icon>
+                  </button>
                 </Table.Cell>
               </Table.Row>
             ))}
