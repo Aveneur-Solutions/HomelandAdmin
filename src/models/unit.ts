@@ -11,6 +11,7 @@ export interface IUnit {
   noOfBalconies: number;
   bookingPrice: number;
   isBooked: boolean;
+  isSold : boolean;
   downPaymentDays: number;
   netArea: number;
   commonArea: number;

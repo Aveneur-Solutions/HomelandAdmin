@@ -6,6 +6,7 @@ import { RootStore } from "./rootStore";
 import { history } from "../";
 import IBooking from "../models/booking";
 import ITransfer from "../models/transfers";
+import { IAllotmentRequest } from "../models/allotment";
 
 export default class UnitStore {
   rootStore: RootStore;
@@ -27,11 +28,13 @@ export default class UnitStore {
       this.loading = true;
       const units = await agent.Units.unitList();
       const bookedUnits = units.filter(x => x.isBooked);
-      const availableUnits = units.filter(x => !x.isBooked)
+      const availableUnits = units.filter(x => !x.isBooked && !x.isSold);
+      const allotedUnits = units.filter(x => x.isSold);
       runInAction(() => {
         this.units = units;
         this.bookedUnits = bookedUnits;
         this.availableUnits = availableUnits;
+        this.allotedUnits = allotedUnits;
         this.loading = false;
       });
       
@@ -130,5 +133,20 @@ export default class UnitStore {
   @action setCurrentUnit = async (unit : IUnit | null) => 
   {
     this.currentUnit = unit
+  }
+  @action createAllotment = async (id : string) =>
+  {
+    console.log(id);
+    var allotementReq : IAllotmentRequest = {
+      flatId : id
+    }
+    try {
+      await agent.Units.createAllotment(allotementReq);
+      toast.success(`Allotment creation successful for ${id}`)
+      history.push("/units")
+    }catch(error)
+    {
+      toast.error("Couldn't create an allotment");
+    }
   }
 }

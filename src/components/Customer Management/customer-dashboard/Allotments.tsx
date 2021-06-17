@@ -12,9 +12,8 @@ const Allotments: React.FC<{ allotments: IAllotment[] }> = ({ allotments }) => {
                     <Table.Header>
                         <Table.Row>
                             <Table.HeaderCell>Unit ID</Table.HeaderCell>
-                            <Table.HeaderCell>Booking Date</Table.HeaderCell>
+                            <Table.HeaderCell>Allotment Date</Table.HeaderCell>
                             <Table.HeaderCell>Allotment Payment Date</Table.HeaderCell>
-                            <Table.HeaderCell>Paid/Unpaid</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -22,8 +21,6 @@ const Allotments: React.FC<{ allotments: IAllotment[] }> = ({ allotments }) => {
                             <Table.Row key={allotment.flatId}>
                                 <Table.Cell>{allotment.flatId}</Table.Cell>
                                 <Table.Cell>{format(new Date(allotment.dateAlloted), "dd MMM yyyy")}</Table.Cell>
-                                <Table.Cell>Cell</Table.Cell>
-                                <Table.Cell>Cell</Table.Cell>
                             </Table.Row>
                         ))}
                     </Table.Body>

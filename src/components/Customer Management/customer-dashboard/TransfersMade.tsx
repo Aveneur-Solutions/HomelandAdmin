@@ -14,7 +14,6 @@ const TransfersMade: React.FC<{ transfers: ITransfer[] }> = ({ transfers }) => {
                         <Table.HeaderCell>Unit ID</Table.HeaderCell>
                         <Table.HeaderCell>Transferred To</Table.HeaderCell>
                         <Table.HeaderCell>Transfer Date</Table.HeaderCell>
-                        <Table.HeaderCell>Download Invoice</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -24,7 +23,6 @@ const TransfersMade: React.FC<{ transfers: ITransfer[] }> = ({ transfers }) => {
                             <Table.Cell>{transfer.flatId}</Table.Cell>
                             <Table.Cell>{transfer.transferredTo}</Table.Cell>
                             <Table.Cell>{format(new Date(transfer.transferDate), "dd MMM yyyy")}</Table.Cell>
-                            <Table.Cell>Cell</Table.Cell>
                         </Table.Row>
                     ))}
                 </Table.Body>
