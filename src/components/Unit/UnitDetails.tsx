@@ -1,7 +1,8 @@
 import { observer } from 'mobx-react-lite';
 import React, { useContext, useEffect } from 'react'
 import { Link, RouteComponentProps } from 'react-router-dom';
-import { Card, Container, Grid, Image } from 'semantic-ui-react'
+import { Button, Card, Container, Grid, Image } from 'semantic-ui-react'
+import CommonModal from '../../modal/CommonModal';
 import { RootStoreContext } from '../../Stores/rootStore'
 interface CustomParams {
   id: string
@@ -9,28 +10,39 @@ interface CustomParams {
 
 const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => {
   const rootStore = useContext(RootStoreContext);
-  const { currentUnit, unitDetails } = rootStore.unitStore;
+  const { currentUnit, unitDetails, setCurrentUnit, createAllotment } = rootStore.unitStore;
 
   useEffect(() => {
     unitDetails(match.params.id)
-  }, [match.params.id, unitDetails])
+    return () => {
+      setCurrentUnit(null);
+    }
+  }, [match.params.id, unitDetails,setCurrentUnit])
 
   return (
     <div className="unittop">
 
       {currentUnit && <Container>
-        <div style={{display:"flex",justifyContent:"space-between"}}>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
           <Link to="/units">
             <button className="homeLandButton">Back to List</button>
           </Link>
-          <button className="homeLandButton">Create allotment</button>
+          {currentUnit.isBooked && <CommonModal
+            header="Are you sure you want to make this booking an allotment ? "
+            buttonText="Yes Sure"
+            btnColor="green"
+            trigger={
+              <Button color="yellow" className="homeLandButton">Create allotment</Button>
+            }
+            action={() => createAllotment(currentUnit.id)}
+          />}
         </div>
 
         <Card fluid>
 
           <Image
             className="cardhover"
-            src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![currentUnit.images.length-1].imageLocation}
+            src={"https://www.homeland.aveneur.com/Images" + currentUnit!.images![currentUnit.images.length - 1].imageLocation}
             wrapped
             ui={false}
           />
@@ -50,20 +62,20 @@ const UnitDetails: React.FC<RouteComponentProps<CustomParams>> = ({ match }) => 
                 <Grid.Column>
                   <Card.Header className="cardtoprow ">
                     Total Size<h4 className="cardtoplabel">{currentUnit!.size}</h4>
-                            sqft.
-                          </Card.Header>
+                    sqft.
+                  </Card.Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Card.Header className="cardtoprow ">
                     Total Price<h4 className="cardtoplabel">{currentUnit!.price}</h4>
-                            Tk
-                          </Card.Header>
+                    Tk
+                  </Card.Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Card.Header className="cardtoprow ">
                     Booking Price<h4 className="cardtoplabel">{currentUnit!.bookingPrice}</h4>
-                            Tk
-                          </Card.Header>
+                    Tk
+                  </Card.Header>
                 </Grid.Column>
               </Grid.Row>
 

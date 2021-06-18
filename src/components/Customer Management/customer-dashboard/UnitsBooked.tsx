@@ -14,7 +14,6 @@ const UnitsBooked: React.FC<{ bookedUnits: IBooking[] }> = ({ bookedUnits }) => 
                         <Table.Row>
                             <Table.HeaderCell>Unit ID</Table.HeaderCell>
                             <Table.HeaderCell>Date of Booking</Table.HeaderCell>
-                            <Table.HeaderCell>Download Invoice</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
 
@@ -23,7 +22,6 @@ const UnitsBooked: React.FC<{ bookedUnits: IBooking[] }> = ({ bookedUnits }) => 
                             <Table.Row key={booking.flatId}>
                                 <Table.Cell>{booking.flatId}</Table.Cell>
                                 <Table.Cell>{format(new Date(booking.dateBooked), "dd MMM yyyy")}</Table.Cell>
-                                <Table.Cell>Cell</Table.Cell>
                             </Table.Row>
                         ))}
                     </Table.Body>

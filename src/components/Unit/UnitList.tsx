@@ -6,7 +6,7 @@ import { RootStoreContext } from "../../Stores/rootStore";
 import DeleteUnitConfirmDiv from "./DeleteUnitConfirmDiv";
 import { history } from "../../";
 import { useMediaQuery } from "react-responsive";
-import DeleteModal from "../../modal/DeleteModal";
+import CommonModal from "../../modal/CommonModal";
 import './unit.css'
 
 interface IProps {
@@ -158,10 +158,10 @@ const UnitList: React.FC<IProps> = ({ units }) => {
                       <p>{item.level}</p>
                     </Table.Cell>
                     <Table.Cell>
-                      <p>{item.isBooked ? "Booked" : "Available"}</p>
+                      <p>{item.isBooked ? "Booked" : item.isSold ? "Sold" : "Available"}</p>
                     </Table.Cell>
                     <Table.Cell>
-                      {(filter === "All" || filter === "Available") && (
+                      {(!item.isBooked && !item.isSold) && (
                         <Fragment>
                           <button
                             onClick={() => history.push(`/unitForm/${item.id}`)}
@@ -169,13 +169,15 @@ const UnitList: React.FC<IProps> = ({ units }) => {
                           >
                             <Icon color="blue" name="edit outline"></Icon>
                           </button>
-                          <DeleteModal
+                          <CommonModal
                             header={`Are you sure you want to delete unit ${item.id}?`}
                             trigger={
                               <button className="action-button">
                                 <Icon color="red" name="delete"></Icon>
                               </button>
                             }
+                            btnColor="red"
+                            buttonText="Yes, Delete permanently"
                             action={() => handleClickDelete(item.id)}
                           />
                         </Fragment>

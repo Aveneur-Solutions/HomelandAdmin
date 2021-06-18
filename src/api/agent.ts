@@ -8,9 +8,11 @@ import { createImageFormData, createUnitFormData } from "../helper/formDataUtil"
 import IBooking from "../models/booking";
 import ITransfer from "../models/transfers";
 import { IStats } from "../models/stats";
+import { request } from "http";
+import { IAllotmentRequest } from "../models/allotment";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
-// axios.defaults.baseURL = "http://localhost:5000/api";
+// axios.defaults.baseURL = "https://localhost:5001/api";
 
 axios.interceptors.request.use(
   (config) => {
@@ -96,7 +98,6 @@ const Admin = {
   deleteImage: (id: string) => requests.del(`/Adminstrator/Images/${id}`),
   getStat : () : Promise<IStats> => requests.get("/Adminstrator/stats"),
   customerDetails : (body : string) : Promise<ICustomerDetails> => requests.get(`/Adminstrator/customerDetails/${body}`)
- 
 };
 
 const User = {
@@ -113,7 +114,8 @@ const Units = {
   details: (id: string) => requests.get(`/flat/${id}`),
   delete: (id: string): Promise<IUnit> => requests.del(`/flat/${id}`),
   getAllBookings : () : Promise<IBooking[]> => requests.get("/flat/AllBookings"),
-  getAllTransfers : () : Promise<ITransfer[]> => requests.get("/flat/AllTransfers")
+  getAllTransfers : () : Promise<ITransfer[]> => requests.get("/flat/AllTransfers"),
+  createAllotment : (body : IAllotmentRequest) => requests.post("/Flat/createAllotment",body) 
 };
 
  const agent =  { Units, User, Admin };

@@ -4,3 +4,6 @@ export interface IAllotment{
     customerName : string,
     dateAlloted : Date
 }
+export interface IAllotmentRequest{
+    flatId : string
+}
