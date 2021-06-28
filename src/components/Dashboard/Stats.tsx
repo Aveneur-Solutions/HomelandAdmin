@@ -7,9 +7,9 @@ interface IProps{
 }
 const Statistics : React.FC<IProps> = ({stats}) => {
   return (
-    <Segment color="black"  style={{position:"absolute",margin:"6% 10% 25% 25%",display:"flex",justifyContent:"center"}}>
+    <Segment color="black"  style={{position:"absolute",margin:"6% 10% 25% 25%",display:"flex",justifyContent:"center", padding: "5px 30px"}}>
       <Statistic.Group>
-        <Statistic color="orange">
+        <Statistic color="yellow">
           <Statistic.Value>{stats.totalUnits}</Statistic.Value>
           <Statistic.Label>Total Units</Statistic.Label>
         </Statistic>
@@ -17,15 +17,15 @@ const Statistics : React.FC<IProps> = ({stats}) => {
           <Statistic.Value>{stats.totalAllottedUnits}</Statistic.Value>
           <Statistic.Label>Total Units Sold</Statistic.Label>
         </Statistic>
-        <Statistic color="olive">
+        <Statistic color="yellow">
           <Statistic.Value>{stats.totalBookedUnits}</Statistic.Value>
           <Statistic.Label>Total Units Booked</Statistic.Label>
         </Statistic>
-        <Statistic color="green">
+        <Statistic color="yellow">
           <Statistic.Value>{stats.totalTransfers}</Statistic.Value>
           <Statistic.Label>Total Units Transferred</Statistic.Label>
         </Statistic>
-        <Statistic color="teal">
+        <Statistic color="yellow">
           <Statistic.Value>{stats.totalUsers}</Statistic.Value>
           <Statistic.Label>Total Number of Users</Statistic.Label>
         </Statistic>

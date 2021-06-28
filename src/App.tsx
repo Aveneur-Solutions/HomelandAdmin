@@ -21,6 +21,7 @@ import PrivateRoute from "./private/PrivateRoute";
 import Reloading from "./private/Reloading";
 import CustomerDashboard from "./components/Customer Management/CustomerDetails";
 import CustomerDetails from "./components/Customer Management/CustomerDetails";
+import Settings from "./components/Settings/Settings";
 
 const App = () => {
   const rootStore = useContext(RootStoreContext);
@@ -58,6 +59,7 @@ const App = () => {
                 <PrivateRoute path="/unit/:id" component={UnitDetails} />
                 <PrivateRoute path="/customerManagement" component={CustomerDash} />
                 <PrivateRoute path="/customerDetails/:phoneNumber" component={CustomerDetails} />
+                <PrivateRoute path="/settings" component={Settings} />
                 <Route path="/reloading" component={Reloading} />
                 {/* <Route component={NotFound} /> */}
               </Switch>

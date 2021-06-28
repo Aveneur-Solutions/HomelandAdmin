@@ -33,7 +33,9 @@ const OtpAuth: React.FC<IProps> = ({ phoneNo, func, buttonText }) => {
         placeholder="OTP"
       />
       {errors.otp && <span>Please enter a valid OTP</span>}
-      <input type="submit" className="button" value={buttonText} />
+      <div className="submitbtn">
+        <input type="submit" value={buttonText} style={{marginTop: 5}} />
+      </div>
     </form>
   );
 };

@@ -7,10 +7,20 @@ import { Container } from "semantic-ui-react";
 import BookingsList from "./BookingsList";
 import TransferList from "./TransferList";
 import MyLoader from "../Common/MyLoader";
+import AllotmentList from "./AllotmentList";
 
 const Unit = () => {
   const rootStore = useContext(RootStoreContext);
-  const { units, listUnits, bookings, transfers, setCurrentUnit, listAllBookings, listAllTransfers, loading } = rootStore.unitStore;
+  const {
+    units,
+    listUnits,
+    bookings,
+    transfers,
+    setCurrentUnit,
+    listAllBookings,
+    listAllTransfers,
+    loading,
+  } = rootStore.unitStore;
   const { token, loggedIn } = rootStore.commonStore;
   useEffect(() => {
     if (token && loggedIn) {
@@ -18,9 +28,9 @@ const Unit = () => {
       listAllBookings();
       listAllTransfers();
     }
-  }, [listUnits, listAllBookings, listAllTransfers,token, loggedIn]);
+  }, [listUnits, listAllBookings, listAllTransfers, token, loggedIn]);
 
-  const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" }
+  const buttonStyle = { backgroundColor: "#1e212d", color: "goldenrod" };
   return (
     <div className="unittop">
       <Container>
@@ -30,22 +40,25 @@ const Unit = () => {
           style={buttonStyle}
           onClick={() => {
             setCurrentUnit(null);
-            history.push("/unitForm")
+            history.push("/unitForm");
           }}
         >
           Add new flat
-      </button>
+        </button>
         <Fragment>
           {loading ? <MyLoader /> : <UnitList units={units} />}
-            {loading ? <MyLoader /> :
-          <div className="list">
-           <BookingsList bookings={bookings} />
-          <TransferList transfers={transfers} />
-          </div>
-          }
-
+          {loading ? (
+            <MyLoader />
+          ) : (
+            <div className="list">
+              <BookingsList bookings={bookings} />
+              <TransferList transfers={transfers} />
+            </div>
+          )}
+          {loading ? <MyLoader /> : <AllotmentList />}
         </Fragment>
-      </Container></div>
+      </Container>
+    </div>
   );
 };
 

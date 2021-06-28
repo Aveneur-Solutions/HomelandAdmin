@@ -1,15 +1,23 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "react-toastify";
-import { IUnit} from "../models/unit";
-import IUser, { ICustomer, ICustomerDetails, IUserLogin, IUserLoginWithOtp } from "../models/user";
+import { IUnit } from "../models/unit";
+import IUser, {
+  IChangePassword,
+  ICustomer,
+  ICustomerDetails,
+  IUserLogin,
+  IUserLoginWithOtp,
+} from "../models/user";
 import { history } from "../";
 import { IImage, IImageUpload } from "../models/image";
-import { createImageFormData, createUnitFormData } from "../helper/formDataUtil";
+import {
+  createImageFormData,
+  createUnitFormData,
+} from "../helper/formDataUtil";
 import IBooking from "../models/booking";
 import ITransfer from "../models/transfers";
 import { IStats } from "../models/stats";
-import { request } from "http";
-import { IAllotmentRequest } from "../models/allotment";
+import { IAllotment, IAllotmentRequest } from "../models/allotment";
 
 axios.defaults.baseURL = "https://homeland.aveneur.com/api";
 // axios.defaults.baseURL = "https://localhost:5001/api";
@@ -90,14 +98,17 @@ const form = {
 };
 
 const Admin = {
-  imageUpload : (data : IImageUpload) => form.galleryPostform("/Adminstrator/Gallery",data),
-  customerList : () : Promise<ICustomer[]> => requests.get("/Adminstrator/UserList"),
+  imageUpload: (data: IImageUpload) =>
+    form.galleryPostform("/Adminstrator/Gallery", data),
+  customerList: (): Promise<ICustomer[]> =>
+    requests.get("/Adminstrator/UserList"),
   getAllImages: (): Promise<IImage[]> => requests.get("/Adminstrator/Images"),
   getImage: (id: string): Promise<IImage> =>
     requests.get(`/Adminstrator/Images/${id}`),
   deleteImage: (id: string) => requests.del(`/Adminstrator/Images/${id}`),
-  getStat : () : Promise<IStats> => requests.get("/Adminstrator/stats"),
-  customerDetails : (body : string) : Promise<ICustomerDetails> => requests.get(`/Adminstrator/customerDetails/${body}`)
+  getStat: (): Promise<IStats> => requests.get("/Adminstrator/stats"),
+  customerDetails: (body: string): Promise<ICustomerDetails> =>
+    requests.get(`/Adminstrator/customerDetails/${body}`),
 };
 
 const User = {
@@ -105,6 +116,8 @@ const User = {
   loginWithOtp: (body: IUserLoginWithOtp): Promise<IUser> =>
     requests.post("/user/loginWithOtp", body),
   currentUser: (): Promise<IUser> => requests.get("/user"),
+  changePassword: (body: IChangePassword) =>
+    requests.post("/user/changePassword", body),
 };
 
 const Units = {
@@ -113,11 +126,14 @@ const Units = {
   edit: (id: string, body: IUnit) => form.unitPutForm(`/flat/${id}`, body),
   details: (id: string) => requests.get(`/flat/${id}`),
   delete: (id: string): Promise<IUnit> => requests.del(`/flat/${id}`),
-  getAllBookings : () : Promise<IBooking[]> => requests.get("/flat/AllBookings"),
-  getAllTransfers : () : Promise<ITransfer[]> => requests.get("/flat/AllTransfers"),
-  createAllotment : (body : IAllotmentRequest) => requests.post("/Flat/createAllotment",body) 
+  getAllBookings: (): Promise<IBooking[]> => requests.get("/flat/AllBookings"),
+  getAllTransfers: (): Promise<ITransfer[]> =>
+    requests.get("/flat/AllTransfers"),
+  createAllotment: (body: IAllotmentRequest) =>
+    requests.post("/Flat/createAllotment", body),
+  getAllotments: (): Promise<IAllotment[]> => requests.get("/flat/allAllotments"),
 };
 
- const agent =  { Units, User, Admin };
+const agent = { Units, User, Admin };
 
- export default agent;
+export default agent;

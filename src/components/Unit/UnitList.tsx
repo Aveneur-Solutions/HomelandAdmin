@@ -3,7 +3,6 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import { Container, Dropdown, DropdownProps, Icon, Input, Table } from "semantic-ui-react";
 import { IUnit } from "../../models/unit";
 import { RootStoreContext } from "../../Stores/rootStore";
-import DeleteUnitConfirmDiv from "./DeleteUnitConfirmDiv";
 import { history } from "../../";
 import { useMediaQuery } from "react-responsive";
 import CommonModal from "../../modal/CommonModal";
@@ -85,6 +84,7 @@ const UnitList: React.FC<IProps> = ({ units }) => {
   const isTabletOrMobileDevice = useMediaQuery({
     query: "(max-device-width: 1224px)",
   });
+  
   return (
     <>
       {!isTabletOrMobileDevice ? (

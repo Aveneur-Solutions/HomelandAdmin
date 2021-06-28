@@ -16,16 +16,16 @@ export default interface IUser {
   phoneNumber: string;
   token: string;
   fullname: string;
-  role : string;
+  role: string;
 }
-export interface ICustomer{
+export interface ICustomer {
   phoneNumber: string;
   fullname: string;
-  role : string;
-  noOfFlatsBooked : number;
-  noOfFlatsAlloted : number;
-  address : string;
-  nid : string;
+  role: string;
+  noOfFlatsBooked: number;
+  noOfFlatsAlloted: number;
+  address: string;
+  nid: string;
 }
 export interface IUserRegister {
   firstName: string;
@@ -33,12 +33,17 @@ export interface IUserRegister {
   phoneNumber: string;
   password: string;
 }
-export interface ICustomerDetails{
-  fullName: string,
-  phoneNumber : string,
-  address : string,
-  nid : string,
-  bookings : IBooking[],
-  allotments : IAllotment[],
-  transfers : ITransfer[]
+export interface ICustomerDetails {
+  fullName: string;
+  phoneNumber: string;
+  address: string;
+  nid: string;
+  bookings: IBooking[];
+  allotments: IAllotment[];
+  transfers: ITransfer[];
+}
+
+export interface IChangePassword {
+  oldPassword: string;
+  newPassword: string;
 }
