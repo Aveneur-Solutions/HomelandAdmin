@@ -16,47 +16,47 @@ const Dashboard = () => {
   const { stats, getStats } = store.adminStore;
   const { token, loggedIn } = store.commonStore;
   useEffect(() => {
-    if (token && loggedIn) getStats()
-  }, [getStats,loggedIn,token])
+    if (token && loggedIn) getStats();
+  }, [getStats, loggedIn, token]);
   return (
     <>
       {!isTabletOrMobileDevice ? (
-
         <div>
-          {stats && <div>
-            <Statistics stats={stats!} />
-            <div className="dashboard">
-              <div className="dashtop">
-                <Grid columns="3">
-                  <Grid.Row>
-                    <Grid.Column>
-                      <DashColumn
-                        routeLink="/units"
-                        imageLink="/images/1.png"
-                        content="Unit Management"
-                      />
-                    </Grid.Column>
-                    {/* GALLERY DATA GOES HERE */}
-                    <Grid.Column>
-                      <DashColumn
-                        routeLink="/gallery"
-                        imageLink="/images/2.png"
-                        content="Gallery Management"
-                      />
-                    </Grid.Column>
-                    <Grid.Column>
-                      <DashColumn
-                        routeLink="/customerManagement"
-                        imageLink="/images/3.png"
-                        content="Customer Management"
-                      />
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
+          {stats && (
+            <div>
+              <Statistics stats={stats!} />
+              <div className="dashboard">
+                <div className="dashtop">
+                  <Grid columns="3">
+                    <Grid.Row>
+                      <Grid.Column>
+                        <DashColumn
+                          routeLink="/units"
+                          imageLink="/images/1.png"
+                          content="Unit Management"
+                        />
+                      </Grid.Column>
+                      {/* GALLERY DATA GOES HERE */}
+                      <Grid.Column>
+                        <DashColumn
+                          routeLink="/gallery"
+                          imageLink="/images/2.png"
+                          content="Gallery Management"
+                        />
+                      </Grid.Column>
+                      <Grid.Column>
+                        <DashColumn
+                          routeLink="/customerManagement"
+                          imageLink="/images/3.png"
+                          content="Customer Management"
+                        />
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
+                </div>
               </div>
             </div>
-          </div>}
-
+          )}
         </div>
       ) : (
         <div className="dashboard-mob">

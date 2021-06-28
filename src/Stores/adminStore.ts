@@ -5,7 +5,7 @@ import agent from "../api/agent";
 import { updateImageArray } from "../helper/updateImageArrayUtil";
 import { IImage, IImageUpload } from "../models/image";
 import { IStats } from "../models/stats";
-import { ICustomerDetails } from "../models/user";
+import { IChangePassword, ICustomerDetails } from "../models/user";
 import { RootStore } from "./rootStore";
 
 export default class AdminStore {
@@ -92,6 +92,15 @@ export default class AdminStore {
       console.log(error);
     }
   };
+
+  @action changePassword = async (data: IChangePassword) => {
+    try {
+      await agent.User.changePassword(data)
+    } catch (error) {
+      throw error
+    }
+  }
+
   @action getStats = async () => {
     const stats = await agent.Admin.getStat();
     runInAction(() => {
