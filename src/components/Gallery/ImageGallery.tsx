@@ -25,7 +25,7 @@ const ImageGallery = () => {
       <div className="image-gallery">
         <button
           className="gall-go-back-btn"
-          onClick={() => history.push("/galleryDash")}
+          onClick={() => history.push("/dashboard")}
         >
           Go back
         </button>

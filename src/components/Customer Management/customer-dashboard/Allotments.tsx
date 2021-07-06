@@ -13,7 +13,6 @@ const Allotments: React.FC<{ allotments: IAllotment[] }> = ({ allotments }) => {
                         <Table.Row>
                             <Table.HeaderCell>Unit ID</Table.HeaderCell>
                             <Table.HeaderCell>Allotment Date</Table.HeaderCell>
-                            <Table.HeaderCell>Allotment Payment Date</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>

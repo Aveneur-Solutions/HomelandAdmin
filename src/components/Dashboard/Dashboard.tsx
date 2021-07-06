@@ -27,7 +27,7 @@ const Dashboard = () => {
               <Statistics stats={stats!} />
               <div className="dashboard">
                 <div className="dashtop">
-                  <Grid columns="3">
+                  <Grid columns="4">
                     <Grid.Row>
                       <Grid.Column>
                         <DashColumn
@@ -39,7 +39,7 @@ const Dashboard = () => {
                       {/* GALLERY DATA GOES HERE */}
                       <Grid.Column>
                         <DashColumn
-                          routeLink="/gallery"
+                          routeLink="/imageGallery"
                           imageLink="/images/2.png"
                           content="Gallery Management"
                         />
@@ -49,6 +49,13 @@ const Dashboard = () => {
                           routeLink="/customerManagement"
                           imageLink="/images/3.png"
                           content="Customer Management"
+                        />
+                      </Grid.Column>
+                      <Grid.Column>
+                        <DashColumn
+                          routeLink="/gallery"
+                          imageLink="/images/upload.png"
+                          content="Upload Content"
                         />
                       </Grid.Column>
                     </Grid.Row>
@@ -61,9 +68,9 @@ const Dashboard = () => {
       ) : (
         <div className="dashboard-mob">
           <div className="dashtop-mob">
-            <Grid columns="1">
+            <Grid  columns="1">
               <Grid.Row>
-                <Grid.Column>
+                <Grid.Column >
                   <DashColumn
                     routeLink="/units"
                     imageLink="/images/1.png"
@@ -83,6 +90,13 @@ const Dashboard = () => {
                     routeLink="/customerManagement"
                     imageLink="/images/3.png"
                     content="Customer Management"
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <DashColumn
+                    routeLink="/gallery"
+                    imageLink="/images/upload.png"
+                    content="Upload Content"
                   />
                 </Grid.Column>
               </Grid.Row>

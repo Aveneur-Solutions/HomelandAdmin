@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
-import { Link } from "react-router-dom";
 import { Icon, Table } from "semantic-ui-react";
-import { ICustomer, ICustomerDetails } from "../../models/user";
+import { ICustomer } from "../../models/user";
+
 interface IProps {
   customer: ICustomer[];
   getCustomerDetails: (number: string) => Promise<void>;
@@ -16,6 +16,7 @@ const CustomerList: React.FC<IProps> = ({ customer,getCustomerDetails}) => {
   }
   return (
     <div style={{ position: "absolute", margin: "5vh 8%" }}>
+      
       <Table celled textAlign="center" padded>
         <Table.Header>
           <Table.Row>

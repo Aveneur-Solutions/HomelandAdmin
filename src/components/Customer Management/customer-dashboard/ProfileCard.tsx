@@ -10,9 +10,6 @@ const ProfileCard : React.FC<{customer : ICustomerDetails}> = ({customer}) => {
             <Image src={ProfilePic} wrapped ui={false} />
             <Card.Content className="profile-content">
                 <Card.Header>{customer.fullName}</Card.Header>
-                <Card.Meta>
-                    <span className='date'>Joined in 2015</span>
-                </Card.Meta>
                 <Card.Description>
                     <Grid>
                         <Grid.Column className="info-column">

@@ -89,6 +89,7 @@ export default class UnitStore {
         history.push("/units");
         toast.success(`Flat ${data.id} has been added Successfully`);
       });
+      console.log(data);
     } catch (error) {
       toast.error("A flat with this id already exists");
       console.log(error);
@@ -129,7 +130,9 @@ export default class UnitStore {
   @action setCurrentUnit = async (unit: IUnit | null) => {
     this.currentUnit = unit;
   };
-
+  @action emptyCurrentUnit =  () => {
+    this.currentUnit = null;
+  };
   @action createAllotment = async (id: string) => {
     console.log(id);
     var allotementReq: IAllotmentRequest = {

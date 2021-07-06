@@ -18,9 +18,6 @@ const Login = () => {
   useEffect(() => {
     if (token && user) {
       history.push("/dashboard");
-      // if (location.state) {
-      //   history.push(location.state.from);
-      // } else history.push("/dashboard");
     }
   }, [token, user]);
 
