@@ -18,14 +18,17 @@ const Sidebar = () => {
         <Link className="bm-item" to="/units">
           Unit
         </Link>
-        <Link className="bm-item" to="/galleryDash">
+        <Link className="bm-item" to="/imageGallery">
           Gallery
         </Link>
         <Link className="bm-item" to="/customerManagement">
           Customer Management
         </Link>
         <Link className="bm-item" to="/settings">
-          Settings
+          Change Password
+        </Link>
+        <Link className="bm-item" to="/gallery">
+          Upload Content
         </Link>
         {loggedIn ? (
           <Link onClick={logout} className="bm-item" to="/">

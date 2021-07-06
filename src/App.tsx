@@ -19,7 +19,6 @@ import ImageDetails from "./components/Gallery/ImageDetails";
 import { history } from ".";
 import PrivateRoute from "./private/PrivateRoute";
 import Reloading from "./private/Reloading";
-import CustomerDashboard from "./components/Customer Management/CustomerDetails";
 import CustomerDetails from "./components/Customer Management/CustomerDetails";
 import Settings from "./components/Settings/Settings";
 

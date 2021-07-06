@@ -1,11 +1,10 @@
 import { format } from "date-fns";
 import { observer } from "mobx-react-lite";
-import React, { Fragment } from "react";
+import React from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useMediaQuery } from "react-responsive";
-import { Container, Table, Icon } from "semantic-ui-react";
-import CommonModal from "../../modal/CommonModal";
+import { Container, Table, Header } from "semantic-ui-react";
 import { RootStoreContext } from "../../Stores/rootStore";
 
 const AllotmentList = () => {
@@ -24,6 +23,9 @@ const AllotmentList = () => {
     <div>
       {!isTabletOrMobileDevice ? (
         <Container className="unit-container">
+          <Header style={{ marginTop: "5vh", textAlign: "center" }}>
+            List of all Allotments
+          </Header>
           <Table celled textAlign="center" padded>
             <Table.Header>
               <Table.Row>

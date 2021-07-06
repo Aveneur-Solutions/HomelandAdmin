@@ -16,11 +16,16 @@
 .tblpc{
     margin-top: 2%;
     margin-right: 2%;
+    border-bottom: 1px solid black;
 }
 .tbmh{
     background-color:#1e212d;
 }
-
+.buildingNumberdropD{
+    width: 20% ;
+    background-color: black;
+    color: aliceblue;
+}
 .action-button{
     margin: 5px;
     height: 30px;

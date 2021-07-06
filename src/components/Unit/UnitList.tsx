@@ -14,7 +14,6 @@ interface IProps {
 
 const UnitList: React.FC<IProps> = ({ units }) => {
   const [unitsTobeDisplayed, setUnits] = useState<IUnit[]>(units);
-  const [filter, setFilter] = useState("All");
 
   const rootStore = useContext(RootStoreContext);
   const {
@@ -64,19 +63,19 @@ const UnitList: React.FC<IProps> = ({ units }) => {
     switch (data.value) {
       case 1:
         setUnits(units);
-        setFilter("All");
+        // setFilter("All");
         break;
       case 2:
         setUnits(availableUnits);
-        setFilter("Available");
+        // setFilter("Available");
         break;
       case 3:
         setUnits(bookedUnits);
-        setFilter("Booked");
+        // setFilter("Booked");
         break;
       case 4:
         setUnits(allotedUnits);
-        setFilter("Alloted");
+        // setFilter("Alloted");
         break;
     }
   };

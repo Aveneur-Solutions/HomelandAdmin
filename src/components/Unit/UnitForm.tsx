@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { Button, Container } from "semantic-ui-react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import "./unit.css";
+import { buildingNumbers } from "./buildingNo";
 
 const UnitForm: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
   const {
@@ -21,6 +22,7 @@ const UnitForm: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
     addUnit,
     editUnit,
     unitDetails,
+    emptyCurrentUnit
   } = rootStore.unitStore;
 
   const [submitting, setSubmitting] = useState(false);
@@ -36,7 +38,10 @@ const UnitForm: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
     if (match.params.id) {
       unitDetails(match.params.id);
     }
-  }, [unitDetails, match.params.id]);
+    return () => {
+      emptyCurrentUnit()
+    }
+  }, [unitDetails, match.params.id,emptyCurrentUnit]);
 
   return (
     <>
@@ -105,14 +110,27 @@ const UnitForm: React.FC<RouteComponentProps<{ id: string }>> = ({ match }) => {
             {errors.level && <p className="errorMsg">{errors.level.message}</p>}
             <label htmlFor="buildingNumber">Building Number</label>
             <br />
-            <input
+            {/* <input
               id="buildingNumber"
               className="uiInput"
               defaultValue={unit?.buildingNumber}
               {...register("buildingNumber", {
                 required: "This field is required",
               })}
-            />
+            /> */}
+            <select
+              id="buildingNumber"
+              className="buildingNumberdropD"
+              placeholder="Building Number"
+              {...register("buildingNumber", {
+                required: "This field is required",
+              })}
+              value={unit?.buildingNumber}
+            >
+              {buildingNumbers.map((b) => (
+                <option key={b.key} value={b.value}>{b.text} </option>
+              ))}
+            </select>
             <br />
             {errors.buildingNumber && (
               <p className="errorMsg">{errors.buildingNumber.message}</p>

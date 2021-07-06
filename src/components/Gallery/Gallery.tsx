@@ -6,24 +6,28 @@ import { useForm } from "react-hook-form";
 import { IImageUpload } from "../../models/image";
 import { Progress } from "semantic-ui-react";
 import { history } from "../..";
+import { toast } from "react-toastify";
 
 const Gallery = () => {
   const rootStore = useContext(RootStoreContext);
   const {  UploadImages } = rootStore.adminStore;
   const [percent, setPercent] = useState(0);
-  //   const formState: IImageUpload = {
-  //     file: null,
-  //     section: "",
-  //   };
-
   const onFormSubmit = (data: IImageUpload) => {
     setPercent(10);
     console.log(data);
-    UploadImages(data).then(() => {
-      reset();
-      setPercent(100);
-      setTimeout(() => setPercent(0), 1500);
-    });
+    if(data.section === "gallery")
+    {
+      UploadImages(data).then(() => {
+        reset();
+        setPercent(100);
+        setTimeout(() => setPercent(0), 1500);
+      });
+    }
+    else if(data.section === "announcement")
+    {
+      toast.success("No Implemented Yet");
+    }
+    
   };
 
   const {
@@ -38,21 +42,20 @@ const Gallery = () => {
     <div className="gallery-form">
       <button
         className="gall-go-back-btn"
-        onClick={() => history.push("/galleryDash")}
+        onClick={() => history.push("/dashboard")}
       >
         Go back
       </button>
       <div>
         <form onSubmit={handleSubmit(onFormSubmit)}>
-          <h2>Upload Images:</h2>
+          <h2>Upload Content:</h2>
           <div className="gallery-form-inside">
             <label htmlFor="section" style={{ marginRight: "20px" }}>
               Select Section{" "}
             </label>
             <select style={{ marginBottom: "10px" }} {...register("section")}>
               <option value="gallery">Gallery</option>
-              <option value="home">Home</option>
-              <option value="projects">Projects</option>
+              <option value="announcement">Announcement</option>
             </select>
             {/* <input defaultValue={formState.section} style={{ marginLeft: "5px" }} {...register("section", { required: "This field is required" })} type="text" name="section" /> */}
             {errors.section && <p>{errors.section.message}</p>}

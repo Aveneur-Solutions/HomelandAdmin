@@ -50,7 +50,7 @@ const Unit = () => {
           {loading ? (
             <MyLoader />
           ) : (
-            <div className="list">
+            <div className="">
               <BookingsList bookings={bookings} />
               <TransferList transfers={transfers} />
             </div>
